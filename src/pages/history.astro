@@ -1,0 +1,33 @@
+---
+import { listDecks } from "../lib/storage";
+import type { Deck } from "../types/deck";
+
+// Fetch all saved decks
+const decks = listDecks();
+---
+
+<main class="p-8">
+  <h1 class="text-3xl font-bold mb-8">Deck History</h1>
+
+  {
+    decks.length === 0 ? (
+      <p>No decks found. Go generate one!</p>
+    ) : (
+      <ul class="space-y-4">
+        {decks.map((deck: Deck) => (
+          <li class="border p-4 rounded-lg shadow">
+            <a
+              href={`/deck/${deck.id}`}
+              class="text-blue-600 underline text-lg"
+            >
+              {deck.title}
+            </a>
+            <p class="text-gray-500 text-sm">
+              Created: {new Date(deck.createdAt).toLocaleString()}
+            </p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</main>

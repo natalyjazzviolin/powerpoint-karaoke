@@ -1,0 +1,31 @@
+---
+import type { Slide } from '../types/deck';
+
+const { slide } = Astro.props as { slide: Slide };
+---
+
+<div class="p-8">
+  <h2 class="text-3xl font-bold mb-4">{slide.title}</h2>
+
+  {slide.bullets && slide.bullets.length > 0 && (
+  <ul class="list-disc ml-5 space-y-2">
+    {slide.bullets.map((b: string, idx: number) => (
+      <li>{b}</li>
+    ))}
+  </ul>
+)}
+
+
+  {slide.chart && slide.chart.type && (
+    <div class="my-6">
+      <!-- For charts, keep small React island inside this section if needed -->
+      <p>Chart goes here</p>
+    </div>
+  )}
+
+  {slide.imagePrompt && (
+    <div class="italic text-gray-500 mt-6">
+      Imagine: {slide.imagePrompt}
+    </div>
+  )}
+</div>

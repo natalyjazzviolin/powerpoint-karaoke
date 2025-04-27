@@ -1,0 +1,20 @@
+---
+import { listDecks } from "../lib/storage";
+
+const decks = listDecks();
+---
+
+<div class="p-8">
+  <h1 class="text-2xl font-bold mb-6">Deck History</h1>
+  <ul class="space-y-4">
+    {
+      decks.map((deck) => (
+        <li class="p-4 border rounded shadow-md">
+          <a href={`/deck/${deck.id}`} class="text-blue-600 underline">
+            {deck.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

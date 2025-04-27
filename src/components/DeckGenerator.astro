@@ -1,0 +1,20 @@
+<div class="text-center mt-20">
+  <button id="generate-btn" class="bg-blue-600 text-white py-3 px-6 rounded-lg">
+    Generate New Deck
+  </button>
+</div>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>("#generate-btn");
+
+  btn?.addEventListener("click", async () => {
+    btn.disabled = true;
+    btn.innerText = "Generating...";
+
+    const res = await fetch("/api/generate-deck", { method: "POST" });
+    const deck = await res.json();
+
+    localStorage.setItem(`pptk-deck-${deck.id}`, JSON.stringify(deck));
+    window.location.href = `/deck/${deck.id}`;
+  });
+</script>
