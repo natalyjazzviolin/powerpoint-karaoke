@@ -1,42 +1,35 @@
 import type { Deck } from "../types/deck";
+import { get, set, keys } from "idb-keyval";
 
-/**
- * Save a deck to localStorage
- */
-export function saveDeck(deck: Deck): void {
-  localStorage.setItem(`pptk-${deck.id}`, JSON.stringify(deck));
+export async function saveDeck(deck: Deck): Promise<void> {
+  await set(`pptk-${deck.id}`, JSON.stringify(deck));
 }
 
-/**
- * Load a single deck from localStorage
- */
-export function getDeck(id: string): Deck | null {
-  const item = localStorage.getItem(`pptk-${id}`);
-  return item ? (JSON.parse(item) as Deck) : null;
+export async function getDeck(id: string): Promise<Deck | null> {
+  const item = await get(`pptk-${id}`);
+  return item ? (JSON.parse(item as string) as Deck) : null;
 }
 
-/**
- * List all saved decks from localStorage
- */
-export function listDecks(): Deck[] {
+
+export async function listDecks(): Promise<Deck[]> {
+  const allKeys = await keys();
   const decks: Deck[] = [];
 
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key && key.startsWith("pptk-")) {
-      const item = localStorage.getItem(key);
+  for (const key of allKeys) {
+    if (
+      typeof key === "string" &&
+      key.startsWith("pptk-") &&
+      !key.startsWith("pptk-img-")
+    ) {
+      const item = await get(key);
       if (item) {
-        try {
-          decks.push(JSON.parse(item) as Deck);
-        } catch (error) {
-          console.error("Failed to parse deck:", error);
-        }
+        decks.push(JSON.parse(item as string) as Deck);
       }
     }
   }
 
-  // Optional: sort decks newest first
   return decks.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
 }
+

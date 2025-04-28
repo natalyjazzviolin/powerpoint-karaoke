@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ChartIsland from "./ChartIsland";
 import type { Deck, Slide } from "../types/deck";
 import ProgressiveImage from "./ProgressiveImage";
+import { get, set } from "idb-keyval";
 
 interface DeckViewerProps {
   id: string;
@@ -34,6 +35,19 @@ export default function DeckViewer({ id }: DeckViewerProps) {
   }, [id]);
 
   useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "ArrowRight") {
+        nextSlide();
+      } else if (e.key === "ArrowLeft") {
+        prevSlide();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []); // ✅ EMPTY dependency array!
+
+  useEffect(() => {
     if (!deck) return;
 
     const nextSlide = deck.slides[slideIndex + 1];
@@ -44,6 +58,12 @@ export default function DeckViewer({ id }: DeckViewerProps) {
 
   async function prefetchImage(slideId: string, prompt: string) {
     try {
+      const cached = await get(`pptk-img-${slideId}`);
+      if (cached) {
+        setPrefetchedImages((prev) => ({ ...prev, [slideId]: cached }));
+        return;
+      }
+
       const res = await fetch("/api/generate-image", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -51,11 +71,14 @@ export default function DeckViewer({ id }: DeckViewerProps) {
       });
       const { url } = await res.json();
 
+      await set(`pptk-img-${slideId}`, url);
+
       setPrefetchedImages((prev) => ({ ...prev, [slideId]: url }));
     } catch (error) {
       console.error("Prefetching image failed:", error);
     }
   }
+
 
   function prevSlide() {
     if (slideIndex > 0) {
@@ -69,35 +92,8 @@ export default function DeckViewer({ id }: DeckViewerProps) {
     if (slideIndex < deck.slides.length - 1) {
       setSlideIndex(slideIndex + 1);
     } else {
-      celebrateAndExit();
+      //   celebrateAndExit();
     }
-  }
-
-  function celebrateAndExit() {
-    const messages = [
-      "🤖 AI has taken over your presentation!",
-      "🛸 Robots are now running your meetings!",
-      "📈 AI salesbots are closing deals without you!",
-      "🧠 Your brain has been outsourced to a neural net!",
-      "☁️ All cloud data now belongs to AI Overlords!",
-      "🪄 Your PowerPoints are now procedurally generated forever!",
-    ];
-
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-
-    const viewer = document.getElementById("deck-viewer");
-    if (viewer) {
-      viewer.innerHTML = `
-        <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
-          <h1 class="text-4xl font-bold text-purple-600 animate-pulse mb-6">${randomMessage}</h1>
-          <p class="text-lg text-gray-500">Redirecting you back to safety...</p>
-        </div>
-      `;
-    }
-
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 3000);
   }
 
   async function regenerateSlide() {
@@ -148,7 +144,19 @@ export default function DeckViewer({ id }: DeckViewerProps) {
   const slide = deck.slides[slideIndex];
 
   return (
-    <div>
+    <div className="relative">
+      {/* Top-right Regenerate Button */}
+      {slide.type !== "intro" && (
+        <button
+          onClick={regenerateSlide}
+          className="absolute top-4 right-4 bg-white border border-gray-300 rounded-full p-2 shadow hover:rotate-90 transition"
+          title="Regenerate Slide"
+        >
+          🔄
+        </button>
+      )}
+
+      {/* Main Content */}
       <div className="min-h-[400px] flex flex-col items-center justify-center text-center p-8">
         {slide.type === "intro" ? (
           <>
@@ -160,53 +168,70 @@ export default function DeckViewer({ id }: DeckViewerProps) {
             </p>
           </>
         ) : (
-          <>
-            <h2 className="text-3xl font-bold mb-4">{slide.title}</h2>
+          <div className="flex flex-col md:flex-row justify-around items-center w-full max-w-6xl gap-8">
+            {/* LEFT: Text side */}
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-3xl font-bold mb-4">{slide.title}</h2>
 
-            {slide.bullets?.length > 0 && (
-              <ul className="list-disc ml-5 space-y-2">
-                {slide.bullets.map((bullet, idx) => (
-                  <li key={idx}>{bullet}</li>
-                ))}
-              </ul>
-            )}
+              {slide.bullets?.length > 0 && (
+                <ul className="list-disc ml-5 space-y-2">
+                  {slide.bullets.map((bullet, idx) => (
+                    <li key={idx}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
 
-            {slide.chart && (
-              <div className="my-8 w-full max-w-xl">
-                <ChartIsland slide={slide} />
+              {slide.chart && (
+                <div className="my-8">
+                  <ChartIsland slide={slide} />
+                </div>
+              )}
+            </div>
+
+            {/* RIGHT: Image side */}
+            {slide.imagePrompt && (
+              <div className="flex-1 flex justify-center">
+                <ProgressiveImage
+                  prompt={slide.imagePrompt}
+                  prefetchedUrl={prefetchedImages[slide.id]}
+                />
               </div>
             )}
-
-            {slide.imagePrompt && (
-              <ProgressiveImage
-                prompt={slide.imagePrompt}
-                prefetchedUrl={prefetchedImages[slide.id]}
-              />
-            )}
-          </>
+          </div>
         )}
       </div>
 
-      <div className="flex justify-between mt-8">
+      {/* Bottom Navigation */}
+      <div className="flex justify-between items-center mt-8">
         <button
           onClick={prevSlide}
-          className="bg-gray-400 text-white py-2 px-4 rounded"
+          disabled={slideIndex === 0}
+          className={`py-2 px-4 rounded cursor-pointer ${
+            slideIndex === 0
+              ? "bg-gray-200 text-gray-500"
+              : "bg-gray-400 text-white"
+          }`}
         >
           Previous
         </button>
-        <button
-          onClick={regenerateSlide}
-          className="absolute top-4 right-4 bg-white border border-gray-300 rounded-full p-2 shadow hover:rotate-90 transition"
-          title="Regenerate Slide"
-        >
-          🔄
-        </button>
-        <button
-          onClick={nextSlide}
-          className="bg-green-600 text-white py-2 px-4 rounded"
-        >
-          Next
-        </button>
+
+        {slideIndex === deck.slides.length - 1 ? (
+          <button
+            onClick={() => {
+              window.location.href = "/";
+            }}
+            className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded cursor-pointer"
+          >
+            Finish
+          </button>
+        ) : (
+          <button
+            onClick={nextSlide}
+            className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded cursor-pointer"
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

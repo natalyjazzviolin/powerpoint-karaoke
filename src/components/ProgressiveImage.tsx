@@ -23,6 +23,16 @@ export default function ProgressiveImage({
 
     async function fetchAiImage() {
       try {
+        // Check cache
+        const cacheKey = `pptk-img-${prompt}`; // You might want a better unique ID
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          setAiImageUrl(cached);
+          setLoading(false);
+          return;
+        }
+
+        // Otherwise generate
         const res = await fetch("/api/generate-image", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -30,6 +40,7 @@ export default function ProgressiveImage({
         });
 
         const { url } = await res.json();
+        localStorage.setItem(cacheKey, url);
         setAiImageUrl(url);
       } catch (error) {
         console.error("Failed to fetch AI image:", error);

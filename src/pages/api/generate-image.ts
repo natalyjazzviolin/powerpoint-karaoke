@@ -10,11 +10,13 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = new FormData();
     formData.append("prompt", prompt);
-    formData.append("output_format", "jpeg");
-    formData.append("model", "stable-diffusion-2-1");
-    formData.append("steps", "10");
-    formData.append("cfg_scale", "5");
-    formData.append("aspect_ratio", "1:1");
+    formData.append("output_format", "png");
+    formData.append("model", "stable-diffusion-xl-lightning");
+    formData.append("aspect_ratio", "1:1"); // Keep it square for now
+    formData.append("steps", "10"); // 🔥 Fewer steps
+    formData.append("cfg_scale", "5"); // Lower guidance
+    formData.append("width", "512"); // 🔥 Smaller size
+    formData.append("height", "512"); // 🔥 Smaller size
 
     const response = await fetch(
       "https://api.stability.ai/v2beta/stable-image/generate/core",
