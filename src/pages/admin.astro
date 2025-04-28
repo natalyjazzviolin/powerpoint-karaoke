@@ -16,6 +16,21 @@ import Layout from "../layouts/Layout.astro";
       >
         + Batch Generate Decks
       </button>
+      <div class="flex gap-4 mt-6">
+        <button
+          id="export-btn"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded"
+        >
+          📦 Export Decks
+        </button>
+        <button
+          id="import-btn"
+          class="bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 rounded"
+        >
+          📥 Import Decks
+        </button>
+        <input id="import-file" type="file" accept=".json" class="hidden" />
+      </div>
     </div>
 
     <div id="deck-list" class="flex flex-col space-y-4"></div>
@@ -167,6 +182,68 @@ import Layout from "../layouts/Layout.astro";
         .getElementById("batch-generate-btn")
         .addEventListener("click", batchGenerate);
       refreshDeckList();
+    });
+
+    const exportBtn = document.getElementById("export-btn");
+    const importBtn = document.getElementById("import-btn");
+    const importFileInput = document.getElementById("import-file");
+
+    exportBtn?.addEventListener("click", () => {
+      const decks = [];
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith("pptk-")) {
+          const item = localStorage.getItem(key);
+          if (item) {
+            try {
+              decks.push(JSON.parse(item));
+            } catch (error) {
+              console.error("Error parsing deck:", error);
+            }
+          }
+        }
+      }
+
+      const blob = new Blob([JSON.stringify(decks, null, 2)], {
+        type: "application/json",
+      });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `pptk-decks-${new Date().toISOString().split("T")[0]}.json`;
+      a.click();
+
+      URL.revokeObjectURL(url);
+    });
+
+    importBtn?.addEventListener("click", () => {
+      importFileInput?.click();
+    });
+
+    importFileInput?.addEventListener("change", async (event) => {
+      const file = event.target?.files?.[0];
+      if (!file) return;
+
+      const text = await file.text();
+      try {
+        const importedDecks = JSON.parse(text);
+
+        for (const deck of importedDecks) {
+          if (deck?.id) {
+            localStorage.setItem(`pptk-${deck.id}`, JSON.stringify(deck));
+          }
+        }
+
+        alert(`Successfully imported ${importedDecks.length} decks!`);
+        await refreshDeckList();
+      } catch (error) {
+        console.error("Failed to import decks:", error);
+        alert(
+          "Failed to import decks. Please make sure the file format is correct."
+        );
+      }
     });
   </script>
 </Layout>
