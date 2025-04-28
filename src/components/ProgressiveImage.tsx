@@ -4,11 +4,13 @@ import { get, set } from "idb-keyval";
 interface ProgressiveImageProps {
   prompt: string;
   prefetchedUrl?: string;
+  className?: string;
 }
 
 export default function ProgressiveImage({
   prompt,
   prefetchedUrl,
+  className = "",
 }: ProgressiveImageProps) {
   const [aiImageUrl, setAiImageUrl] = useState<string | null>(
     prefetchedUrl || null
@@ -64,8 +66,8 @@ export default function ProgressiveImage({
           src={aiImageUrl}
           alt={prompt}
           onLoad={() => setLoading(false)}
-          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-700 ${
-            loading ? "opacity-0" : "opacity-100"
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-700 ${className} ${
+            loading ? "opacity-0" : "opacity-100 "
           }`}
         />
       )}

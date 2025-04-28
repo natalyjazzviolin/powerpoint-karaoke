@@ -196,19 +196,23 @@ export default function DeckViewer({ id }: DeckViewerProps) {
         ) : slide.type === "qa" ? (
           // 🚀 Q&A SLIDE
           <>
-            <h1 className="text-4xl font-extrabold text-purple-600 mb-8">
-              Q&A
-            </h1>
-            <div className="flex flex-wrap justify-center gap-6">
+            <h2 className="text-4xl font-extrabold mb-6">{slide.title}</h2>
+            <div className="flex flex-wrap justify-center gap-4 max-w-5xl">
               {deck.slides
                 .filter(
-                  (s) => s.imagePrompt && s.type !== "intro" && s.type !== "qa"
+                  (s) =>
+                    s.imagePrompt &&
+                    s.id !== "intro-slide" &&
+                    s.id !== "qa-slide"
                 )
-                .map((imgSlide) => (
-                  <div key={imgSlide.id} className="w-40 h-40">
+                .map((s) => (
+                  <div
+                    key={s.id}
+                    className="w-40 h-40 overflow-hidden rounded-lg shadow-md bg-white"
+                  >
                     <ProgressiveImage
-                      prompt={imgSlide.imagePrompt!}
-                      prefetchedUrl={prefetchedImages[imgSlide.id]}
+                      prompt={s.imagePrompt!}
+                      prefetchedUrl={prefetchedImages[s.id]}
                     />
                   </div>
                 ))}
