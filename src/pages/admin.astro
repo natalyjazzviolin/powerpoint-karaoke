@@ -147,40 +147,38 @@ import Layout from "../layouts/Layout.astro";
       await refreshDeckList();
     }
 
-    async function batchGenerate() {
+    async function generateSingleDeck() {
       const btn = document.getElementById("batch-generate-btn");
       btn.disabled = true;
       btn.textContent = "Generating...";
 
       try {
-        const promises = [];
-        for (let i = 0; i < 5; i++) {
-          promises.push(fetch("/api/generate-deck", { method: "POST" }));
+        const res = await fetch("/api/generate-deck", { method: "POST" });
+
+        if (!res.ok) {
+          throw new Error(`Failed to fetch deck: ${res.status}`);
         }
 
-        const results = await Promise.all(promises);
+        const deck = await res.json();
+        deck.id = `deck-${crypto.randomUUID()}`;
+        deck.status = "available";
 
-        for (const res of results) {
-          const deck = await res.json();
-          deck.id = `deck-${crypto.randomUUID()}`;
-          deck.status = "available";
-          localStorage.setItem(`pptk-${deck.id}`, JSON.stringify(deck));
-        }
+        localStorage.setItem(`pptk-${deck.id}`, JSON.stringify(deck));
 
         await refreshDeckList();
       } catch (error) {
-        console.error("Batch generate error:", error);
-        alert("Failed to batch generate decks.");
+        console.error("Error generating deck:", error);
+        alert("Failed to generate a deck. Please try again later.");
       }
 
       btn.disabled = false;
-      btn.textContent = "+ Batch Generate Decks";
+      btn.textContent = "+ Generate Deck";
     }
 
     window.addEventListener("DOMContentLoaded", () => {
       document
         .getElementById("batch-generate-btn")
-        .addEventListener("click", batchGenerate);
+        .addEventListener("click", generateSingleDeck);
       refreshDeckList();
     });
 
