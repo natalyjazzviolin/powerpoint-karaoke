@@ -1,8 +1,7 @@
-// src/components/DeckViewer.tsx
-
 import { useState, useEffect } from "react";
 import ChartIsland from "./ChartIsland";
 import type { Deck, Slide } from "../types/deck";
+import ProgressiveImage from "./ProgressiveImage";
 
 interface DeckViewerProps {
   id: string;
@@ -11,6 +10,10 @@ interface DeckViewerProps {
 export default function DeckViewer({ id }: DeckViewerProps) {
   const [deck, setDeck] = useState<Deck | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
+
+  const [prefetchedImages, setPrefetchedImages] = useState<
+    Record<string, string>
+  >({});
 
   useEffect(() => {
     const deckJson = localStorage.getItem(`pptk-${id}`);
@@ -30,14 +33,32 @@ export default function DeckViewer({ id }: DeckViewerProps) {
     setDeck(parsedDeck);
   }, [id]);
 
-  if (!deck) {
-    return <p className="text-center text-xl text-red-500">Deck not found!</p>;
+  useEffect(() => {
+    if (!deck) return;
+
+    const nextSlide = deck.slides[slideIndex + 1];
+    if (nextSlide && nextSlide.imagePrompt && !prefetchedImages[nextSlide.id]) {
+      prefetchImage(nextSlide.id, nextSlide.imagePrompt);
+    }
+  }, [slideIndex, deck]);
+
+  async function prefetchImage(slideId: string, prompt: string) {
+    try {
+      const res = await fetch("/api/generate-image", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+      const { url } = await res.json();
+
+      setPrefetchedImages((prev) => ({ ...prev, [slideId]: url }));
+    } catch (error) {
+      console.error("Prefetching image failed:", error);
+    }
   }
 
-  const slide = deck.slides[slideIndex];
-
   function prevSlide() {
-    if (deck && slideIndex > 0) {
+    if (slideIndex > 0) {
       setSlideIndex(slideIndex - 1);
     }
   }
@@ -48,7 +69,6 @@ export default function DeckViewer({ id }: DeckViewerProps) {
     if (slideIndex < deck.slides.length - 1) {
       setSlideIndex(slideIndex + 1);
     } else {
-      // 🎉 End of deck!
       celebrateAndExit();
     }
   }
@@ -65,24 +85,24 @@ export default function DeckViewer({ id }: DeckViewerProps) {
 
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-    // Replace the deck viewer content with the message
     const viewer = document.getElementById("deck-viewer");
     if (viewer) {
       viewer.innerHTML = `
-      <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
-        <h1 class="text-4xl font-bold text-purple-600 animate-pulse mb-6">${randomMessage}</h1>
-        <p class="text-lg text-gray-500">Redirecting you back to safety...</p>
-      </div>
-    `;
+        <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
+          <h1 class="text-4xl font-bold text-purple-600 animate-pulse mb-6">${randomMessage}</h1>
+          <p class="text-lg text-gray-500">Redirecting you back to safety...</p>
+        </div>
+      `;
     }
 
-    // After a short delay, redirect to home
     setTimeout(() => {
       window.location.href = "/";
-    }, 3000); // 3 seconds
+    }, 3000);
   }
 
   async function regenerateSlide() {
+    if (!deck) return;
+    const slide = deck.slides[slideIndex];
     if (!slide || slide.type === "intro") {
       alert("Cannot regenerate the title slide!");
       return;
@@ -106,12 +126,8 @@ export default function DeckViewer({ id }: DeckViewerProps) {
       });
       const newSlide = await res.json();
 
-      if (!deck) {
-        throw new Error("Deck not loaded");
-      }
-
       const updatedDeck: Deck = {
-        ...(deck as Deck),
+        ...deck,
         slides: deck.slides.map((s, idx) =>
           idx === slideIndex ? newSlide : s
         ),
@@ -124,6 +140,12 @@ export default function DeckViewer({ id }: DeckViewerProps) {
       alert("Failed to regenerate slide.");
     }
   }
+
+  if (!deck) {
+    return <p className="text-center text-xl text-red-500">Deck not found!</p>;
+  }
+
+  const slide = deck.slides[slideIndex];
 
   return (
     <div>
@@ -156,9 +178,10 @@ export default function DeckViewer({ id }: DeckViewerProps) {
             )}
 
             {slide.imagePrompt && (
-              <div className="italic text-gray-500 mt-6">
-                Imagine: {slide.imagePrompt}
-              </div>
+              <ProgressiveImage
+                prompt={slide.imagePrompt}
+                prefetchedUrl={prefetchedImages[slide.id]}
+              />
             )}
           </>
         )}
