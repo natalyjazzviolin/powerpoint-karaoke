@@ -87,43 +87,30 @@ export default function DeckViewer({ id }: DeckViewerProps) {
   function nextSlide() {
     if (!deck) return;
 
-    if (slideIndex < deck.slides.length - 1) {
+    if (slideIndex < (deck.slides?.length ?? 0) - 1) {
       setSlideIndex(slideIndex + 1);
     } else {
-        celebrateAndExit();
+      // 🎯 Finished deck
+      markDeckAsPresented();
     }
   }
 
-  function celebrateAndExit() {
-    const messages = [
-      "🤖 AI has claimed this deck!",
-      "📈 The robots have judged your pitch!",
-      "🚀 Your sales career has been absorbed by the singularity!",
-      "🎭 The future of business is... weird.",
-    ];
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-    const viewer = document.getElementById("deck-viewer");
-    if (viewer) {
-      viewer.innerHTML = `
-      <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
-        <h1 class="text-4xl font-bold text-purple-600 animate-pulse mb-6">${randomMessage}</h1>
-        <p class="text-lg text-gray-500">Returning to safety...</p>
-      </div>
-    `;
-    }
+  function markDeckAsPresented() {
+    if (!deck) return;
 
-    // ✅ Mark deck as presented
-    const deckJson = localStorage.getItem(`pptk-${id}`);
-    if (deckJson) {
-      const deck = JSON.parse(deckJson);
-      deck.status = "presented";
-      localStorage.setItem(`pptk-${id}`, JSON.stringify(deck));
-    }
+    const updatedDeck: Deck = {
+      ...deck,
+      status: "presented",
+    };
 
+    localStorage.setItem(`pptk-${updatedDeck.id}`, JSON.stringify(updatedDeck));
+    setDeck(updatedDeck);
+
+    // 🎉 Redirect after a short pause
     setTimeout(() => {
       window.location.href = "/";
-    }, 1000);
+    }, 900);
   }
 
   async function regenerateSlide() {
@@ -252,9 +239,7 @@ export default function DeckViewer({ id }: DeckViewerProps) {
 
           {slideIndex === deck.slides.length - 1 ? (
             <button
-              onClick={() => {
-                window.location.href = "/";
-              }}
+              onClick={markDeckAsPresented}
               className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded cursor-pointer"
             >
               Finish

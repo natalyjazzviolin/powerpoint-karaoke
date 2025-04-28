@@ -22,5 +22,7 @@ export interface Deck {
   title: string;
   description: string;
   slides: Slide[];
-  createdAt: string; // ISO timestamp
+  createdAt: string;
+  status?: "available" | "presented";
 }
+
