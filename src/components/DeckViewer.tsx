@@ -47,13 +47,13 @@ export default function DeckViewer({ id }: DeckViewerProps) {
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "ArrowRight") {
         if (slideIndex < (deck?.slides?.length ?? 0) - 1) {
-          nextSlide();
+          setSlideIndex((prev) => prev + 1);
         } else {
           finishDeck();
         }
       } else if (e.key === "ArrowLeft") {
         if (slideIndex > 0) {
-          prevSlide();
+          setSlideIndex((prev) => prev - 1);
         }
       }
     }
@@ -61,6 +61,7 @@ export default function DeckViewer({ id }: DeckViewerProps) {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [slideIndex, deck]);
+
 
 
   useEffect(() => {
@@ -92,10 +93,12 @@ export default function DeckViewer({ id }: DeckViewerProps) {
   }
 
   function prevSlide() {
-    if (slideIndex > 0) {
-      setSlideIndex(slideIndex - 1);
+    if (slideIndex > 1) {
+      // <-- CHANGED
+      setSlideIndex((prev) => prev - 1);
     }
   }
+
 
   function nextSlide() {
     if (!deck) return;
@@ -226,12 +229,6 @@ export default function DeckViewer({ id }: DeckViewerProps) {
                     ))}
                   </ul>
                 )}
-
-                {slide.chart && (
-                  <div className="my-8">
-                    <ChartIsland slide={slide} />
-                  </div>
-                )}
               </div>
 
               {/* RIGHT: Image side */}
@@ -241,6 +238,11 @@ export default function DeckViewer({ id }: DeckViewerProps) {
                     prompt={slide.imagePrompt}
                     prefetchedUrl={prefetchedImages[slide.id]}
                   />
+                </div>
+              )}
+              {slide.chart && (
+                <div className="w-full md:w-2/3 flex justify-center">
+                  <ChartIsland slide={slide} />
                 </div>
               )}
             </div>
@@ -253,13 +255,13 @@ export default function DeckViewer({ id }: DeckViewerProps) {
         <div className="flex justify-between items-center w-full max-w-2xl mt-8">
           <button
             onClick={prevSlide}
-            disabled={slideIndex === 0}
+            disabled={slideIndex <= 1} // <-- CHANGED from slideIndex === 0
             className={`py-2 px-4 rounded transition
-      ${
-        slideIndex === 0
-          ? "invisible bg-gray-200 text-gray-200 cursor-default"
-          : "bg-gray-400 hover:bg-gray-500 text-white cursor-pointer"
-      }`}
+    ${
+      slideIndex <= 1
+        ? "invisible bg-gray-200 text-gray-200 cursor-default"
+        : "bg-gray-400 hover:bg-gray-500 text-white cursor-pointer"
+    }`}
           >
             Previous
           </button>
