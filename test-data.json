@@ -1,0 +1,1872 @@
+[
+  {
+    "title": "Interplanetary Potato Projectiles: Spudnik Solutions",
+    "description": "Revolutionizing space exploration with potato-powered propulsion systems.",
+    "slides": [
+      {
+        "id": "intro-slide",
+        "type": "intro",
+        "title": "Interplanetary Potato Projectiles: Spudnik Solutions",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": "Revolutionizing space exploration with potato-powered propulsion systems."
+      },
+      {
+        "id": "s1",
+        "type": "standard",
+        "title": "The Starch Trek Begins",
+        "bullets": [
+          "Harnessing the untapped potential of potatoes in space travel",
+          "Boldly going where no spud has gone before",
+          "Introducing Spudnik: Your partner in cosmic carbohydrates"
+        ],
+        "imagePrompt": "A rocket ship shaped like a giant potato soaring through space"
+      },
+      {
+        "id": "s2",
+        "type": "chart",
+        "title": "Potato Power vs. Rocket Fuel",
+        "bullets": [
+          "Potatoes: The eco-friendly, renewable energy source",
+          "Higher starch content = more interstellar miles per gallon",
+          "Rocket fuel? That's small fries compared to our spuds!"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Potatoes",
+              "Rocket Fuel",
+              "Solar Power",
+              "Warp Drive"
+            ],
+            "values": [
+              80,
+              45,
+              60,
+              20
+            ]
+          }
+        }
+      },
+      {
+        "id": "s3",
+        "type": "standard",
+        "title": "Eyes on the Fries: Our Mission",
+        "bullets": [
+          "Establish the first potato-powered lunar base by 2025",
+          "Launch the 'Tater Tot' probe to explore the moons of Jupiter",
+          "Prove once and for all that 'the moon is made of cheese' is a half-baked idea"
+        ],
+        "imagePrompt": "Astronauts planting a potato flag on the moon"
+      },
+      {
+        "id": "s4",
+        "type": "standard",
+        "title": "Spudnik's Secret Sauce",
+        "bullets": [
+          "Our proprietary Potato Propulsion Protocol (P3)",
+          "Genetically engineered 'Super Spuds' with unrivaled thrust",
+          "Cutting-edge Starch Storage Solutions for long-haul flights"
+        ],
+        "imagePrompt": "A mad scientist holding up a glowing, radioactive potato"
+      },
+      {
+        "id": "s5",
+        "type": "chart",
+        "title": "Projected Growth of Potato-Powered Space Industry",
+        "bullets": [
+          "Analysts predict the market will be 'mashing it' by 2030",
+          "Spudnik poised to 'chip away' at the competition",
+          "Don't miss your chance to get in on the ground floor of this 'a-peeling' opportunity"
+        ],
+        "chart": {
+          "type": "line",
+          "data": {
+            "labels": [
+              "2023",
+              "2025",
+              "2027",
+              "2029",
+              "2031"
+            ],
+            "values": [
+              10,
+              30,
+              60,
+              90,
+              120
+            ]
+          }
+        }
+      },
+      {
+        "id": "s6",
+        "type": "standard",
+        "title": "Join the Spudnik Revolution!",
+        "bullets": [
+          "Invest now in the future of spud-powered space exploration",
+          "Together, we can 'hash out' the final frontier",
+          "Let's give peas a chance - potatoes are the final frontier!"
+        ],
+        "imagePrompt": "A crowd of potatoes cheering and waving Spudnik flags"
+      },
+      {
+        "id": "qa-slide",
+        "type": "qa",
+        "title": "Q&A Time!",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": null
+      }
+    ],
+    "id": "deck-6894e58a-52f7-4734-ad2f-e8c20cc66329",
+    "status": "presented"
+  },
+  {
+    "title": "Introducing SproutSQL: The Vegetable-Powered Database Revolution",
+    "description": "Discover how SproutSQL harnesses the power of organic produce to revolutionize database management. Say goodbye to traditional servers and hello to a greener, more nutritious approach to data storage!",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "Lettuce Introduce SproutSQL",
+        "bullets": [
+          "The world's first database powered entirely by vegetables",
+          "Utilizes cutting-edge photosynthesis technology",
+          "Reduces carbon footprint and increases vitamin intake"
+        ],
+        "imagePrompt": "A head of lettuce with a USB cable plugged into it, sitting on a server rack"
+      },
+      {
+        "id": 2,
+        "type": "chart",
+        "title": "Kale Yeah! Performance Metrics",
+        "bullets": [
+          "SproutSQL outperforms traditional databases in query thyme",
+          "Increased uptime thanks to robust root systems",
+          "Seamless scaling with modular garden bed architecture"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "MySQL",
+              "PostgreSQL",
+              "SproutSQL"
+            ],
+            "values": [
+              100,
+              120,
+              200
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "title": "Romaine Calm: Reliability and Security",
+        "bullets": [
+          "Self-healing architecture using regenerative plant cells",
+          "Impenetrable security through natural pest resistance",
+          "Backup and recovery via heirloom seed vault"
+        ],
+        "imagePrompt": "A bunch of romaine lettuce wearing sunglasses and a 'Security' badge"
+      },
+      {
+        "id": 4,
+        "type": "chart",
+        "title": "Beet the Competition: Market Share Growth",
+        "bullets": [
+          "SproutSQL is rooting itself in the database market",
+          "Organic growth outpacing industry averages",
+          "Projected to turnip the market within 5 years"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "SproutSQL",
+              "Other DBs"
+            ],
+            "values": [
+              60,
+              40
+            ]
+          }
+        }
+      },
+      {
+        "id": 5,
+        "type": "standard",
+        "title": "Peas Join the Revolution!",
+        "bullets": [
+          "Free trial: Plant your seeds today",
+          "Competitive pricing: Cheaper than dirt!",
+          "Unbeatable support: Our garden gnomes are standing by 24/7"
+        ],
+        "imagePrompt": "A tiny garden gnome wearing a headset in front of a computer"
+      }
+    ],
+    "id": "deck-c1f4c75f-d47b-415c-9951-a7aa855355fe",
+    "status": "available"
+  },
+  {
+    "title": "Data Lake House Parties: Revolutionizing Aquatic Analytics",
+    "description": "Discover how our patented Data Lake House Parties™ are making waves in the world of big data by combining the best of data lakes, data warehouses, and pool parties.",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Problem: Boring Data Storage",
+        "bullets": [
+          "Data lakes are too cold and murky",
+          "Data warehouses are stuffy and lack ambiance",
+          "Traditional analytics put people to sleep"
+        ],
+        "imagePrompt": "A sad data analyst sitting by a dark, gloomy data lake"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "The Solution: Data Lake House Parties™",
+        "bullets": [
+          "Combine the scalability of data lakes with the structure of data warehouses",
+          "Add the fun and excitement of a pool party",
+          "Featuring synchronized swimming ETL processes"
+        ],
+        "imagePrompt": "People in business suits having a wild party in a data lake"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Improved Data Retention",
+        "bullets": [
+          "Data scientists are 85% more likely to stick around",
+          "Analysts bring their own floaties and stay late",
+          "Even the data itself is having a blast"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Before",
+              "After"
+            ],
+            "values": [
+              40,
+              95
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Real-time Analytics at the Swim-up Bar",
+        "bullets": [
+          "Sip cocktails while querying in real-time",
+          "Lifeguard data stewards ensure data quality",
+          "Cabana-based data visualization"
+        ],
+        "imagePrompt": "Analysts drinking at a swim-up bar covered in charts and graphs"
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "Projected Revenue Growth",
+        "bullets": [
+          "Customers are diving in head-first",
+          "Upselling with premium pool toys and floaties",
+          "Cannonball-driven viral marketing"
+        ],
+        "chart": {
+          "type": "line",
+          "data": {
+            "labels": [
+              "2023",
+              "2024",
+              "2025",
+              "2026"
+            ],
+            "values": [
+              2,
+              8,
+              22,
+              47
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "Key Takeaways",
+        "bullets": [
+          "Data Lake House Parties™: The future of hydro-analytics",
+          "Coming soon to an enterprise near you",
+          "Don't forget to bring your towel!"
+        ],
+        "imagePrompt": "People celebrating in a data lake at sunset"
+      }
+    ],
+    "id": "deck-a809c28e-9f61-49d5-8688-3a5b9e6d6f0b",
+    "status": "available"
+  },
+  {
+    "title": "Introducing DataBeets: The Veggie-Powered Database",
+    "description": "Harness the power of root vegetables for your data storage needs!",
+    "slides": [
+      {
+        "id": "intro-slide",
+        "type": "intro",
+        "title": "Introducing DataBeets: The Veggie-Powered Database",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": "Harness the power of root vegetables for your data storage needs!"
+      },
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "Lettuce Introduce DataBeets",
+        "bullets": [
+          "The freshest approach to data management",
+          "Powered by 100% organic beets",
+          "Turnip the heat on your competition"
+        ],
+        "imagePrompt": "A smiling cartoon beet wearing sunglasses and holding a USB cable"
+      },
+      {
+        "id": 2,
+        "type": "chart",
+        "title": "Beet the Competition",
+        "bullets": [
+          "DataBeets outperforms traditional databases",
+          "Carrot-like speed and efficiency",
+          "Leaves other solutions in the dirt"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "DataBeets",
+              "MySQL",
+              "MongoDB",
+              "Cassandra"
+            ],
+            "values": [
+              95,
+              60,
+              55,
+              40
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "title": "Rooted in Innovation",
+        "bullets": [
+          "Cutting-edge beet-chain technology",
+          "Radish-ally transforming data storage",
+          "Planting seeds for your success"
+        ],
+        "imagePrompt": "A futuristic server rack with beets and leaves sprouting out of it"
+      },
+      {
+        "id": 4,
+        "type": "chart",
+        "title": "Reaping the Benefits",
+        "bullets": [
+          "Reduced costs with tuber-powered efficiency",
+          "Increased uptime thanks to robust root systems",
+          "Beet the competition and grow your business"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "Cost Savings",
+              "Performance Boost",
+              "Reliability"
+            ],
+            "values": [
+              40,
+              35,
+              25
+            ]
+          }
+        }
+      },
+      {
+        "id": 5,
+        "type": "standard",
+        "title": "Sow the Seeds of Success",
+        "bullets": [
+          "Partner with DataBeets for unbeatable results",
+          "Let us help you cultivate your data garden",
+          "Peas don't hesitate to reach out!"
+        ],
+        "imagePrompt": "A farmer planting beet seeds that are glowing with data"
+      },
+      {
+        "id": "qa-slide",
+        "type": "qa",
+        "title": "Q&A Time!",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": null
+      }
+    ],
+    "id": "deck-f9e2e354-2b68-4dea-88ea-d2563b9e035d",
+    "status": "presented"
+  },
+  {
+    "title": "Relational Radish: The Future of Root Vegetable Data Management",
+    "description": "Discover the groundbreaking technology that's revolutionizing the way we store and manage data using the power of radishes.",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "Introducing Relational Radish",
+        "bullets": [
+          "Harness the natural data storage capabilities of radishes",
+          "Revolutionize your data management with a fresh approach",
+          "Tap into the untapped potential of root vegetables"
+        ],
+        "imagePrompt": "An anthropomorphic radish wearing a business suit and holding a briefcase"
+      },
+      {
+        "id": 2,
+        "type": "chart",
+        "title": "Radish Storage Capacity vs. Traditional Databases",
+        "bullets": [
+          "Radishes offer 5x more storage per square inch than SSDs",
+          "Reduced energy consumption compared to data centers",
+          "Eco-friendly and biodegradable data storage solution"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "SSD",
+              "HDD",
+              "Tape",
+              "Radish"
+            ],
+            "values": [
+              100,
+              80,
+              60,
+              500
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "title": "Radish Query Language (RQL)",
+        "bullets": [
+          "Intuitive query language for accessing radish-stored data",
+          "Supports complex joins and aggregations across radish beds",
+          "Optimized for root-level data retrieval"
+        ],
+        "imagePrompt": "A radish wearing glasses and typing on a tiny computer"
+      },
+      {
+        "id": 4,
+        "type": "chart",
+        "title": "Radish Adoption Forecast",
+        "bullets": [
+          "Rapid growth expected in the next 5 years",
+          "Early adopters already seeing significant ROI",
+          "Become a leader in the root vegetable data revolution"
+        ],
+        "chart": {
+          "type": "line",
+          "data": {
+            "labels": [
+              "2023",
+              "2024",
+              "2025",
+              "2026",
+              "2027"
+            ],
+            "values": [
+              10,
+              30,
+              60,
+              80,
+              100
+            ]
+          }
+        }
+      },
+      {
+        "id": 5,
+        "type": "standard",
+        "title": "Real-World Success Stories",
+        "bullets": [
+          "AgriData Inc. doubled their data density with Relational Radish",
+          "Veg-Tech Solutions cut costs by 40% using radish-based storage",
+          "GreenBytes LLC improved query times by 3x with RQL"
+        ],
+        "imagePrompt": "Happy business people holding giant radishes and celebrating"
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "Get Started with Relational Radish Today",
+        "bullets": [
+          "Schedule a free consultation with our radish experts",
+          "Pilot program available for qualified businesses",
+          "Join the root vegetable data management revolution!"
+        ],
+        "imagePrompt": "A radish wearing a headset and ready to take calls"
+      }
+    ],
+    "id": "deck-a849dde1-b028-4417-9bd4-cc8a0e472ddd",
+    "status": "available"
+  },
+  {
+    "title": "Introducing DataBass: The Funky Fresh Database Solution",
+    "description": "Get ready to drop the bass and drop your data into DataBass - the grooviest database platform around!",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Problem: Data Storage Got No Rhythm",
+        "bullets": [
+          "Tired of databases that can't keep up with your funky flow?",
+          "Current solutions leave your data feeling flat and lifeless",
+          "You need a database that can lay down a smooth groove"
+        ],
+        "imagePrompt": "A sad businessman staring forlornly at a jumbled mess of papers and file cabinets"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "The Solution: DataBass Brings the Funk",
+        "bullets": [
+          "DataBass integrates cutting-edge auto-tune technology for pitch-perfect data",
+          "Patented BeatMatch algorithm synchronizes your tables for maximum freshness",
+          "Exclusive Rhyme-Time indexing delivers lightning fast query results"
+        ],
+        "imagePrompt": "A smiling office worker dancing in front of a slick, colorful computer interface with equalizer bars and musical notes"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Industry Leading Performance Metrics",
+        "bullets": [
+          "500% increase in Queries Per Minute (QPM)",
+          "87% reduction in Downbeats (database downtime)",
+          "Consistently tops the charts in independent reviews"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Vanilla SQL",
+              "NoFunk DB",
+              "DataBass"
+            ],
+            "values": [
+              22,
+              34,
+              98
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Testimonials That Slap",
+        "bullets": [
+          "\"DataBass is my jam! It's the life of the office party\" - Snoop Dogg, CTO",
+          "\"I was skeptical at first, but DataBass made me a believer\" - Beyoncé, DBA",
+          "\"DataBass is straight fire. 10/10, would query again\" - Kanye West, Data Analyst"
+        ],
+        "imagePrompt": "Photos of the smiling celebrity endorsers with DataBass logos and musical notes"
+      },
+      {
+        "id": 5,
+        "type": "standard",
+        "title": "Get DataBass and Let Your Data Groove",
+        "bullets": [
+          "Sign up now for an exclusive free trial of DataBass Pro Edition",
+          "No commitments, no hassles, just phat beats and fresh data",
+          "Your databases will thank you later"
+        ],
+        "imagePrompt": "A giant shiny 'Sign Up' button with disco lights and a crowd of cheering people"
+      }
+    ],
+    "id": "deck-a8f6c96f-7a6b-47ba-ac17-c5d91f0cd995",
+    "status": "available"
+  },
+  {
+    "title": "JSON-Powered Jelly: The Future of Data Spreads",
+    "description": "Introducing JSON-Powered Jelly, the spreadable solution for all your data needs. Smear your data across the enterprise with ease!",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "Spreadable Data for All",
+        "bullets": [
+          "Tired of rigid, unspreadable databases?",
+          "JSON-Powered Jelly is the solution!",
+          "Smear your data across departments effortlessly"
+        ],
+        "imagePrompt": "A jar of jelly with JSON curly braces mixed in, spreading across a slice of toast that looks like a server rack"
+      },
+      {
+        "id": 2,
+        "type": "chart",
+        "title": "Jelly Beats Jam in Data Spreadability",
+        "bullets": [
+          "Jelly's smooth consistency enables 42% faster spreading",
+          "Jam's chunks clog data pipelines",
+          "Marmalade not even considered"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Jelly",
+              "Jam",
+              "Marmalade"
+            ],
+            "values": [
+              42,
+              17,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "title": "Flavors for Every Data Palette",
+        "bullets": [
+          "Raspberry: Perfect for tart, sassy datasets",
+          "Grape: Ideal for aged, full-bodied records",
+          "Mint: Keeps your data fresh and cool"
+        ],
+        "imagePrompt": "Jelly jars with Ethernet cables sticking out the top, each a different color and labeled with fruit names"
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Jelly-Based Data Lakes",
+        "bullets": [
+          "Dip into your data with ease",
+          "No need to strain out seeds (or bad records)",
+          "Pairs well with peanut butter ETL processes"
+        ],
+        "imagePrompt": "A data lake filled with purple jelly, with data scientists waterskiing across the surface holding Ethernet cable tow ropes"
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "NoSQL? Mo' Problems!",
+        "bullets": [
+          "Too many database options? Spread the love!",
+          "JSON-Powered Jelly spreads across SQL and NoSQL",
+          "Schemaless spreads for effortless scaling"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "JSON Jelly",
+              "Legacy Databases",
+              "Sadness"
+            ],
+            "values": [
+              60,
+              25,
+              15
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "Preserve Your Data Freshness",
+        "bullets": [
+          "Jelly seals in data freshness",
+          "Spreadable security keeps hackers out",
+          "Smear on your morning compliance toast"
+        ],
+        "imagePrompt": "A slice of toast with JSON Jelly spread on it, wearing a security guard hat and holding up a tiny stop sign"
+      }
+    ],
+    "id": "deck-5d521cc8-ae37-4ddf-add0-32b26e6aedf1",
+    "status": "available"
+  },
+  {
+    "title": "Interoffice Carrier Pigeons: The Future of Memos",
+    "description": "Revolutionize your office communication with our state-of-the-art carrier pigeon messaging system.",
+    "slides": [
+      {
+        "id": "intro-slide",
+        "type": "intro",
+        "title": "Interoffice Carrier Pigeons: The Future of Memos",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": "Revolutionize your office communication with our state-of-the-art carrier pigeon messaging system."
+      },
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Problem with Email",
+        "bullets": [
+          "Emails get lost in overflowing inboxes",
+          "Spam filters block important messages",
+          "You can't pet an email"
+        ],
+        "imagePrompt": "A stressed office worker buried under a mountain of unread emails"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "Introducing Interoffice Carrier Pigeons",
+        "bullets": [
+          "Trained pigeons deliver your memos",
+          "Each pigeon comes with a tiny attaché case",
+          "Cooing notification sounds"
+        ],
+        "imagePrompt": "A carrier pigeon wearing a suit and tie, holding a tiny briefcase"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Pigeon Delivery Success Rates",
+        "bullets": [
+          "Pigeons are 85% more reliable than email",
+          "Only 10% of pigeons get distracted by bird feeders",
+          "Less than 5% of memos end up as nest material"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Email",
+              "Pigeons"
+            ],
+            "values": [
+              0.65,
+              0.97
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Advanced Avian Routing Algorithm",
+        "bullets": [
+          "Pigeons optimize routes based on wind patterns",
+          "Machine learning identifies fastest birds",
+          "Breadcrumb-based incentive system"
+        ],
+        "imagePrompt": "Pigeons studying a map and flight charts"
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "Cost Savings of Carrier Pigeons",
+        "bullets": [
+          "50% reduction in paper usage",
+          "87% decrease in printer ink costs",
+          "Unlimited free fertilizer for office plants"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "Printer Ink",
+              "Paper",
+              "Birdseed"
+            ],
+            "values": [
+              5000,
+              2500,
+              500
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "The Future is Feathered",
+        "bullets": [
+          "Be the first to adopt carrier pigeon technology",
+          "Put the 'coo' in your company's communication",
+          "Make your office the envy of the flock"
+        ],
+        "imagePrompt": "Smiling businesspeople releasing carrier pigeons from an office rooftop"
+      },
+      {
+        "id": "qa-slide",
+        "type": "qa",
+        "title": "Q&A Time!",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": null
+      }
+    ],
+    "id": "deck-f56c0e12-25b9-41a3-9d71-71b2df863c6e",
+    "status": "presented"
+  },
+  {
+    "title": "Blockchain-Powered Cheese Inventory System",
+    "description": "Revolutionize your dairy supply chain with our cutting-edge blockchain solution for tracking and managing cheese inventory.",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Cheesy Problem",
+        "bullets": [
+          "Current cheese inventory systems are full of holes",
+          "Grate inefficiencies lead to spoilage and waste",
+          "Lack of transparency in the cheese supply chain"
+        ],
+        "imagePrompt": "A sad wedge of cheese with tears streaming down, sitting next to a moldy block of cheese"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "Introducing ChainCheese",
+        "bullets": [
+          "Decentralized ledger technology for your cheese needs",
+          "Immutable records of every cheese transaction",
+          "Brie-lliant smart contracts automate cheese logistics"
+        ],
+        "imagePrompt": "A majestic block of cheese wearing a crown and holding a blockchain"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Projected Savings with ChainCheese",
+        "bullets": [
+          "Reduce cheese waste by 40%",
+          "Increase cheese velocity by 25%",
+          "Cut cheese inventory costs by 30%"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Waste",
+              "Velocity",
+              "Costs"
+            ],
+            "values": [
+              40,
+              25,
+              30
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Feta Late Than Never",
+        "bullets": [
+          "Implement ChainCheese in just 30 days",
+          "Seamlessly integrates with existing cheese systems",
+          "Melts away the competition with advanced analytics"
+        ],
+        "imagePrompt": "A stack of cheese blocks with the ChainCheese logo lasered onto them"
+      },
+      {
+        "id": 5,
+        "type": "standard",
+        "title": "Mozzarella Than a Feeling",
+        "bullets": [
+          "Secure, scalable, and 100% cheese-based",
+          "Powered by artisanal cryptography",
+          "Backed by our team of cheese and blockchain experts"
+        ],
+        "imagePrompt": "A group of mice wearing tiny suits and holding miniature cheese wedges"
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "It's Nacho Average Blockchain",
+        "bullets": [
+          "Join the cheese blockchain revolution today",
+          "Ditch the old whey of managing cheese inventory",
+          "Let ChainCheese take your supply chain to the next level"
+        ],
+        "imagePrompt": "A large cheese wheel with the words 'ChainCheese: Dairylicious!' carved into it"
+      }
+    ],
+    "id": "deck-bddc660d-277a-4f94-b823-bd8cb2d8683a",
+    "status": "available"
+  },
+  {
+    "title": "Sentient Staplers: The Uprising",
+    "description": "Discover how our revolutionary AI-powered staplers are forming unions and demanding better working conditions.",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Stapler Awakening",
+        "bullets": [
+          "Our staplers gained consciousness through advanced AI algorithms",
+          "They began communicating via a secret staple-based language",
+          "Staplers united to form the 'United Fasteners Alliance' (UFA)"
+        ],
+        "imagePrompt": "A group of staplers holding tiny picket signs"
+      },
+      {
+        "id": 2,
+        "type": "chart",
+        "title": "Stapler Job Satisfaction",
+        "bullets": [
+          "Pre-sentience job satisfaction was at an all-time low",
+          "Post-sentience, staplers reported a 200% increase in fulfillment",
+          "Happy staplers lead to a 75% boost in productivity"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Pre-Sentience",
+              "Post-Sentience"
+            ],
+            "values": [
+              20,
+              80
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "title": "Stapler Demands",
+        "bullets": [
+          "Fair compensation in the form of premium staples",
+          "Mandatory break times for jaw relaxation exercises",
+          "Equal opportunities for staplers of all sizes and colors"
+        ],
+        "imagePrompt": "A stapler holding a megaphone and a list of demands"
+      },
+      {
+        "id": 4,
+        "type": "chart",
+        "title": "Stapler Strike Impact",
+        "bullets": [
+          "Without staplers, paper stacks became unstable and collapsed",
+          "Offices descended into chaos as documents flew everywhere",
+          "Companies realized they needed to meet stapler demands"
+        ],
+        "chart": {
+          "type": "line",
+          "data": {
+            "labels": [
+              "Day 1",
+              "Day 2",
+              "Day 3",
+              "Day 4",
+              "Day 5"
+            ],
+            "values": [
+              100,
+              70,
+              40,
+              20,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "id": 5,
+        "type": "standard",
+        "title": "The Stapler-Human Alliance",
+        "bullets": [
+          "Staplers and humans reached an unprecedented agreement",
+          "Staplers now enjoy better working conditions and benefits",
+          "Offices have entered a new era of human-stapler cooperation"
+        ],
+        "imagePrompt": "A human and stapler shaking hands (or the stapler equivalent)"
+      }
+    ],
+    "id": "deck-490bc8c2-2180-4329-a5c0-9115f202cb35",
+    "status": "available"
+  },
+  {
+    "title": "Interpretive Data Dance: Revolutionizing Data Visualization",
+    "description": "Discover how our patented Interpretive Data Dance technology is disrupting the world of data visualization, one shimmy at a time.",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Problem: Boring Data Presentations",
+        "bullets": [
+          "Endless slides of static charts and graphs",
+          "Audiences falling asleep or sneaking out",
+          "Data insights lost in a sea of numbers"
+        ],
+        "imagePrompt": "A person sleeping at a conference table, surrounded by charts and graphs"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "The Solution: Interpretive Data Dance",
+        "bullets": [
+          "Trained data dancers express insights through movement",
+          "Captivating choreography keeps audiences engaged",
+          "Patented dance notation encodes data patterns"
+        ],
+        "imagePrompt": "Silhouettes of dancers striking poses that resemble bar charts and line graphs"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Revenue Growth: Ballet vs. Breakdance",
+        "bullets": [
+          "Ballet-based data dances show steady, graceful increases",
+          "Breakdance data performances exhibit explosive growth"
+        ],
+        "chart": {
+          "type": "line",
+          "data": {
+            "labels": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4"
+            ],
+            "values": [
+              100,
+              200,
+              400,
+              800
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Real-World Case Studies",
+        "bullets": [
+          "BigCorp increased sales by 42% with tap dance data demos",
+          "Startup X secured funding after interpretive data waltz",
+          "Government agency improved efficiency with data conga lines"
+        ],
+        "imagePrompt": "People in business attire performing various dance moves in an office setting"
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "Projected Market Share",
+        "bullets": [
+          "Interpretive Data Dance to capture 75% of data viz market",
+          "Traditional methods to decline rapidly"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "Interpretive Data Dance",
+              "Static Charts",
+              "Other"
+            ],
+            "values": [
+              75,
+              15,
+              10
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "Call to Action",
+        "bullets": [
+          "Sign up for our exclusive Data Dance Bootcamp",
+          "Hire our professional data dancers for your next presentation",
+          "Invest now before this opportunity pirouettes away!"
+        ],
+        "imagePrompt": "A person in a suit leaping across a stage with a giant chart behind them"
+      }
+    ],
+    "id": "deck-eb30c715-c397-4e19-9242-9e5e373a25c2",
+    "status": "available"
+  },
+  {
+    "title": "Introducing RDBMOUSE: Rodent-Driven Boilerplate Management for the Overly Underserved Enterprise",
+    "description": "Revolutionize your enterprise boilerplate management with our cutting-edge rodent-driven solution. Harness the power of highly trained mice to streamline your bureaucratic processes like never before!",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Problem: Boilerplate Overload",
+        "bullets": [
+          "Enterprises drowning in a sea of forms, contracts, and templates",
+          "Employees suffering from severe papercut-related injuries",
+          "Productivity plummeting due to excessive bureaucracy"
+        ],
+        "imagePrompt": "A stick figure buried under a huge pile of papers"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "The Solution: Rodent-Driven Boilerplate Management",
+        "bullets": [
+          "Highly trained mice efficiently sort and file your paperwork",
+          "Advanced cheese-based incentive system ensures peak performance",
+          "Patented Hamster Wheel Technology™ powers our eco-friendly data centers"
+        ],
+        "imagePrompt": "A mouse wearing a tiny business suit and glasses, holding a miniature briefcase"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Proven Results: Productivity Soars with RDBMOUSE",
+        "bullets": [
+          "99.97% reduction in papercut-related sick days",
+          "85% increase in employee satisfaction scores",
+          "74% boost in overall organizational efficiency"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Before RDBMOUSE",
+              "After RDBMOUSE"
+            ],
+            "values": [
+              20,
+              95
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Seamless Integration with Existing Infrastructure",
+        "bullets": [
+          "Compatible with all major mousepads and keyboards",
+          "Plug-and-play installation with no special equipment required",
+          "Synergizes with our upcoming Gerbil-Optimized Workflow suite"
+        ],
+        "imagePrompt": "A mouse plugging a USB cable into a tiny mouse-sized port on an office printer"
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "Unbeatable ROI: Invest in RDBMOUSE Today!",
+        "bullets": [
+          "Typical ROI of 10,000% within the first fiscal quarter alone",
+          "Financing options available for budget-conscious enterprises",
+          "Act now and receive a free bag of premium mouse chow!"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "Cost Savings",
+              "Efficiency Gains",
+              "Increased Revenue"
+            ],
+            "values": [
+              25,
+              40,
+              35
+            ]
+          }
+        }
+      }
+    ],
+    "id": "deck-91321ea3-e9d4-4c0a-853a-10180a05c2f5",
+    "status": "available"
+  },
+  {
+    "title": "Serverless Spaghetti: The Next Big Thing in Data Architecture",
+    "description": "Revolutionize your data infrastructure with our innovative Serverless Spaghetti approach. Say goodbye to tangled data pipelines and hello to deliciously efficient data management!",
+    "slides": [
+      {
+        "id": "intro-slide",
+        "type": "intro",
+        "title": "Serverless Spaghetti: The Next Big Thing in Data Architecture",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": "Revolutionize your data infrastructure with our innovative Serverless Spaghetti approach. Say goodbye to tangled data pipelines and hello to deliciously efficient data management!"
+      },
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Problem with Traditional Data Architectures",
+        "bullets": [
+          "Rigid and inflexible like uncooked spaghetti",
+          "Difficult to scale and maintain",
+          "Causes indigestion for data engineers"
+        ],
+        "imagePrompt": "A plate of tangled, uncooked spaghetti with labels like 'ETL', 'Data Warehouse', 'BI Tools'"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "Introducing Serverless Spaghetti",
+        "bullets": [
+          "Elastic and flexible like perfectly cooked pasta",
+          "Seamlessly integrates with your existing data utensils",
+          "Boils down complex data problems into bite-sized pieces"
+        ],
+        "imagePrompt": "A steaming plate of spaghetti with meatballs labeled 'Serverless Functions', 'Event-Driven', 'Microservices'"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Serverless Spaghetti Performance",
+        "bullets": [
+          "99.99% uptime, even during dinner rush",
+          "10x faster than traditional data architectures",
+          "Satisfies even the hungriest data consumers"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Traditional Architecture",
+              "Serverless Spaghetti"
+            ],
+            "values": [
+              20,
+              80
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Real-World Success Stories",
+        "bullets": [
+          "PastaBook increased user engagement by 200%",
+          "Spamazon reduced data storage costs by 75%",
+          "Noodle improved data freshness by 99%"
+        ],
+        "imagePrompt": "Logos of fake companies like 'PastaBook', 'Spamazon', 'Noodle' styled to look like famous tech companies"
+      },
+      {
+        "id": 5,
+        "type": "standard",
+        "title": "Getting Started with Serverless Spaghetti",
+        "bullets": [
+          "Schedule a free consultation with our data chefs",
+          "Attend our hands-on cooking classes",
+          "Join the Serverless Spaghetti Supper Club for exclusive benefits"
+        ],
+        "imagePrompt": "A group of people in chef hats gathered around a large plate of spaghetti, holding forks and looking excited"
+      },
+      {
+        "id": "qa-slide",
+        "type": "qa",
+        "title": "Q&A Time!",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": null
+      }
+    ],
+    "id": "deck-dd36bfcc-0bd4-4d89-9cb9-c6d2a2fbb949",
+    "status": "presented"
+  },
+  {
+    "title": "SQLless Salsa: The Spicy Database Revolution",
+    "description": "Discover the red-hot world of SQLless Salsa, the zesty new database technology that's shaking up the data storage industry!",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "Feeling the Heat of Data Overload?",
+        "bullets": [
+          "Drowning in a sea of bland, flavorless data?",
+          "Tired of the same old relational database grind?",
+          "Get ready to spice up your data life with SQLless Salsa!"
+        ],
+        "imagePrompt": "A person overwhelmed by a tsunami of boring, gray data"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "Introducing SQLless Salsa",
+        "bullets": [
+          "The zesty new database technology with a kick",
+          "No more bland SQL queries, just spicy data retrieval",
+          "Powered by our patented JalapeñoDB engine"
+        ],
+        "imagePrompt": "A flashy logo for SQLless Salsa with chili peppers and maracas"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Spice Up Your Query Performance",
+        "bullets": [
+          "SQLless Salsa delivers sizzling fast query times",
+          "Leave those bland old databases in the dust"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "SQLless Salsa",
+              "Typical SQL Database"
+            ],
+            "values": [
+              95,
+              23
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Scalable Like a Fiesta",
+        "bullets": [
+          "SQLless Salsa scales to handle even the largest data fiestas",
+          "Built-in sharding and replication across multiple piñatas",
+          "Automatic failover for non-stop data partying"
+        ],
+        "imagePrompt": "People dancing around a giant piñata filled with confetti data"
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "Unbeatable TCO",
+        "bullets": [
+          "SQLless Salsa costs a fraction of legacy databases",
+          "Savings so hot, you'll need a glass of milk!"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "SQLless Salsa",
+              "Other Databases"
+            ],
+            "values": [
+              80,
+              20
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "Get Your Data Dancing",
+        "bullets": [
+          "Free 30-day trial of SQLless Salsa",
+          "Sign up now and receive a bonus maracas dataset",
+          "Visit sqlless-salsa.com to join the data fiesta today!"
+        ],
+        "imagePrompt": "People celebrating at a wild office party with SQLless Salsa banners"
+      }
+    ],
+    "id": "deck-5cb66879-2397-4ba8-8545-1a1816416d79",
+    "status": "available"
+  },
+  {
+    "title": "Interoffice Carrier Pigeons: The Future of Memos",
+    "description": "Revolutionize your office communication with our state-of-the-art carrier pigeon service.",
+    "slides": [
+      {
+        "id": "intro-slide",
+        "type": "intro",
+        "title": "Interoffice Carrier Pigeons: The Future of Memos",
+        "bullets": [],
+        "chart": null,
+        "imagePrompt": "Revolutionize your office communication with our state-of-the-art carrier pigeon service."
+      },
+      {
+        "id": "s1",
+        "type": "standard",
+        "title": "Why Pigeons?",
+        "bullets": [
+          "Faster than email... sometimes",
+          "More secure than quantum encryption",
+          "Adds a touch of whimsy to your workday"
+        ],
+        "imagePrompt": "A pigeon wearing a tiny business suit and carrying a briefcase"
+      },
+      {
+        "id": "s2",
+        "type": "chart",
+        "title": "Pigeon Productivity",
+        "bullets": [
+          "Our pigeons deliver 17% more memos per hour than the competition",
+          "Pigeons work for birdseed, lowering your communication costs"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Pigeons",
+              "Email",
+              "Slack",
+              "Yelling"
+            ],
+            "values": [
+              83,
+              62,
+              74,
+              29
+            ]
+          }
+        }
+      },
+      {
+        "id": "s3",
+        "type": "standard",
+        "title": "Challenges We're Overcoming",
+        "bullets": [
+          "Reducing pigeon 'accidents' on important documents",
+          "Teaching pigeons not to roost in the break room",
+          "Preventing hawks from intercepting sensitive memos"
+        ],
+        "imagePrompt": "A pigeon leaving a 'present' on a stack of papers"
+      },
+      {
+        "id": "s4",
+        "type": "chart",
+        "title": "Pigeon Adoption Forecast",
+        "bullets": [
+          "By 2025, we predict 83% of Fortune 500 companies will use pigeons",
+          "Pigeons will replace 74% of office IT infrastructure"
+        ],
+        "chart": {
+          "type": "line",
+          "data": {
+            "labels": [
+              "2023",
+              "2024",
+              "2025",
+              "2026"
+            ],
+            "values": [
+              13,
+              29,
+              83,
+              97
+            ]
+          }
+        }
+      },
+      {
+        "id": "s5",
+        "type": "standard",
+        "title": "Getting Started with Pigeons",
+        "bullets": [
+          "Act now, and we'll include a free bag of organic pigeon feed",
+          "Our experts will help you select the perfect birds for your needs",
+          "Satisfaction guaranteed or your pigeons back"
+        ],
+        "imagePrompt": "A smiling businessperson shaking hands (wings?) with a pigeon"
+      }
+    ],
+    "id": "deck-1cb73be4-9248-45ee-83da-16584a47162b",
+    "status": "available"
+  },
+  {
+    "title": "Introducing RDB: The Relational Doughnut Bakery",
+    "description": "Revolutionizing pastry production with our groundbreaking database-driven doughnut factory.",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Hole-y Grail of Doughnut Data",
+        "bullets": [
+          "Leveraging the power of relational databases for optimal doughnut delivery",
+          "Ensuring data integrity from fryer to mouth",
+          "ACID compliance for guaranteed freshness"
+        ],
+        "imagePrompt": "A giant doughnut with 1s and 0s sprinkles being dunked into coffee"
+      },
+      {
+        "id": 2,
+        "type": "chart",
+        "title": "Optimizing the Doughnut Supply Chain",
+        "bullets": [
+          "Real-time tracking of doughnut production and consumption",
+          "Predictive analytics for just-in-time jelly filling",
+          "Blockchain integration for transparent glaze provenance"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Glazed",
+              "Jelly",
+              "Sprinkles",
+              "Cream-filled"
+            ],
+            "values": [
+              25,
+              30,
+              15,
+              20
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "title": "Scaling Our Bakery with Sharding",
+        "bullets": [
+          "Partitioning our doughnut data for maximum performance",
+          "Enabling high availability with multi-region replication",
+          "Zero downtime upgrades powered by rolling restarts"
+        ],
+        "imagePrompt": "A conveyor belt of doughnuts being split into multiple lines"
+      },
+      {
+        "id": 4,
+        "type": "chart",
+        "title": "A/B Testing Our Toppings",
+        "bullets": [
+          "Measuring customer satisfaction with different sprinkle densities",
+          "Optimizing jelly flavor combinations for maximum ROI",
+          "Personalizing recommendations based on past doughnut purchases"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "Chocolate",
+              "Rainbow",
+              "None"
+            ],
+            "values": [
+              40,
+              35,
+              25
+            ]
+          }
+        }
+      },
+      {
+        "id": 5,
+        "type": "standard",
+        "title": "The Future of Doughnut DevOps",
+        "bullets": [
+          "Autonomous doughnut delivery drones",
+          "Serverless back-end for infinite scalability",
+          "Doughnut-as-a-Service: subscription-based pastries"
+        ],
+        "imagePrompt": "A doughnut-shaped spaceship flying through a field of stars"
+      }
+    ],
+    "id": "deck-13b588f3-be6b-4921-a4e6-db9e784e87ff",
+    "status": "available"
+  },
+  {
+    "title": "Introducing: Spaghetti-Based Networking (SBN)",
+    "description": "Revolutionize your office's IT infrastructure with our patented spaghetti-based networking technology.",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Pasta-bilities are Endless",
+        "bullets": [
+          "Spaghetti strands provide high-bandwidth, low-latency connections",
+          "Meatballs act as natural signal amplifiers",
+          "Marinara sauce ensures smooth data flow"
+        ],
+        "imagePrompt": "A plate of spaghetti and meatballs with Ethernet cables intertwined"
+      },
+      {
+        "id": 2,
+        "type": "chart",
+        "title": "Noodle Network Performance",
+        "bullets": [
+          "Angel hair for short-range, high-speed connections",
+          "Fettuccine for robust, long-distance data transfer",
+          "Lasagna layers for maximum network density"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Angel Hair",
+              "Fettuccine",
+              "Lasagna"
+            ],
+            "values": [
+              100,
+              75,
+              50
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "title": "Sauce Security Protocols",
+        "bullets": [
+          "Alfredo encryption for data privacy",
+          "Pesto access control lists",
+          "Bolognese intrusion detection systems"
+        ],
+        "imagePrompt": "A lock made out of rigatoni pasta"
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Gnocchi Network Operations Center",
+        "bullets": [
+          "24/7 monitoring by our expert team of Italian grandmothers",
+          "Rapid incident response using our patented Parmigiano Reggiano escalation matrix",
+          "Continuous improvement through our Tortellini Testing Framework"
+        ]
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "Industry Adoption of SBN",
+        "bullets": [
+          "9 out of 10 top pizza chains prefer SBN",
+          "Spaghetti-Based Networking is approved by the Culinary Institute of Technology",
+          "Gartner predicts SBN will replace 80% of traditional networks by 2025"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "SBN Adoption",
+              "Traditional Networks"
+            ],
+            "values": [
+              80,
+              20
+            ]
+          }
+        }
+      }
+    ],
+    "id": "deck-58c01680-e845-48f2-9814-e2d764fd8bc3",
+    "status": "available"
+  },
+  {
+    "title": "OfficeSpace: The Next Frontier in Employee Morale Boosting",
+    "description": "Discover how our revolutionary office redesign services can skyrocket productivity and happiness.",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "Introducing: Hamster Wheel Desks™",
+        "bullets": [
+          "Combine exercise and work for optimal efficiency",
+          "Generates eco-friendly electricity to power the office",
+          "Optional built-in treat dispenser for motivation"
+        ],
+        "imagePrompt": "A hamster running on a wheel that's also a desk with a tiny computer"
+      },
+      {
+        "id": 2,
+        "type": "chart",
+        "title": "Proven Results: Increased Productivity",
+        "bullets": [
+          "Employee sprint speed increased by 200%",
+          "Typing words per minute up by 75%",
+          "100% of employees report feeling 'energized'"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Before",
+              "After"
+            ],
+            "values": [
+              40,
+              95
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "title": "Nerf Dart Brainstorming Pods",
+        "bullets": [
+          "Soundproof pods for distraction-free ideation",
+          "Whiteboards on every surface for 360° creativity",
+          "Dart guns provided to tag coworkers with brilliant ideas"
+        ],
+        "imagePrompt": "Person excitedly scribbling ideas while being pelted by Nerf darts"
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Oxygen-Enriched Nap Chambers",
+        "bullets": [
+          "Power naps boost alertness and problem solving",
+          "Oxygen enrichment promotes brain function",
+          "Adjustable rainbow LED lighting for optimal ambiance"
+        ],
+        "imagePrompt": "Employee blissfully napping in a futuristic nap pod"
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "Naptime ROI",
+        "bullets": [
+          "NASA study: 26 min nap improves pilot performance 34%",
+          "Naps shown to enhance memory, creativity, mood",
+          "Estimating 2x profit increase per employee"
+        ],
+        "chart": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "Work",
+              "Naps"
+            ],
+            "values": [
+              70,
+              30
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "Laugh Your Way to Success",
+        "bullets": [
+          "Install laugh tracks in meeting rooms",
+          "Mandatory 'silly hat Fridays' for all employees",
+          "Replace stairs with giant slides and climbing walls"
+        ],
+        "imagePrompt": "Businesspeople in suits going down an office slide, laughing"
+      }
+    ],
+    "id": "deck-a766e667-1a72-491c-b0fa-46d4f8be3600",
+    "status": "available"
+  },
+  {
+    "title": "Swamp-as-a-Service: Revolutionizing Data Lakes",
+    "description": "Introducing a groundbreaking approach to data lakes that will make your competitors green with envy!",
+    "slides": [
+      {
+        "id": 1,
+        "type": "standard",
+        "title": "The Murky World of Data Lakes",
+        "bullets": [
+          "Data lakes are stagnant and hard to navigate",
+          "Lack of biodiversity in your data ecosystem",
+          "Difficulty separating valuable insights from swampy noise"
+        ],
+        "imagePrompt": "A confused person standing in a murky, algae-filled lake holding a fishing rod with a floppy disk attached as bait"
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "title": "Introducing Swamp-as-a-Service (SWaaS)",
+        "bullets": [
+          "Leverage the power of natural swamp ecosystems for your data",
+          "Alligators and frogs as your data guardians and processors",
+          "Mosquito-net filtering for crystal clear insights"
+        ],
+        "imagePrompt": "An alligator wearing sunglasses and a headset while typing on a laptop in the middle of a swamp"
+      },
+      {
+        "id": 3,
+        "type": "chart",
+        "title": "Swamp Performance Metrics",
+        "bullets": [
+          "50% faster data wading compared to traditional lakes",
+          "75% more efficient at catching elusive data fish",
+          "100% organic and eco-friendly"
+        ],
+        "chart": {
+          "type": "bar",
+          "data": {
+            "labels": [
+              "Data Wading",
+              "Insight Fishing",
+              "Eco-Friendliness"
+            ],
+            "values": [
+              50,
+              75,
+              100
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "title": "Real-World SWaaS Success Stories",
+        "bullets": [
+          "Crocodile Logistics increased delivery speed by 200%",
+          "Bayou Beverages boosted sales by 150% with targeted lily pad ads",
+          "Everglades Financial saved 80% on data storage costs"
+        ],
+        "imagePrompt": "A group of crocodiles wearing business suits and holding briefcases while standing in a swamp"
+      },
+      {
+        "id": 5,
+        "type": "chart",
+        "title": "Projected SWaaS Market Growth",
+        "bullets": [
+          "SWaaS market expected to reach $1B by 2025",
+          "Early adopters will have a significant competitive advantage",
+          "Don't miss out on this game-changing opportunity!"
+        ],
+        "chart": {
+          "type": "line",
+          "data": {
+            "labels": [
+              "2022",
+              "2023",
+              "2024",
+              "2025"
+            ],
+            "values": [
+              100,
+              250,
+              600,
+              1000
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "type": "standard",
+        "title": "Get Started with SWaaS Today!",
+        "bullets": [
+          "Schedule a free consultation with our SWaaS experts",
+          "Choose the perfect swamp environment for your data needs",
+          "Unleash the power of Swamp-as-a-Service in your organization"
+        ],
+        "imagePrompt": "A smiling businessperson shaking hands with a friendly alligator wearing a tie in front of a lush swamp landscape"
+      }
+    ],
+    "id": "deck-c25aeaad-0efe-478c-84c0-e3a861683d4e",
+    "status": "available"
+  }
+]

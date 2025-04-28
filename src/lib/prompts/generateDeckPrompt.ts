@@ -33,6 +33,8 @@ Final Output:
 **Important Rules**:
 - No explanations, no text before or after the JSON.
 - Decks must be varied and *not* always about quantum, AI, cloud, or generic topics.
+- Make sure a deck topic is unique and do not include sentient office supplies, bananas, telepathic toasters, potato messaging, carrier pigeons, quantum computing, intergallactic solutions, squirrels, data lakes, serious logical topics, noSQL, relational
+- Try topics touching on databases but make them absurd and silly with puns where possible but workplace appropriate
 `;
 
 export default generateDeckPrompt;

@@ -11,6 +11,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
     envPrefix: ["STABILITY_", "PUBLIC_"],
   },
-
+  devToolbar: {
+    enabled: false
+  },
   integrations: [react()],
 });
