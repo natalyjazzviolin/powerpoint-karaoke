@@ -46,7 +46,7 @@ export async function generateDeck(): Promise<Deck> {
 }
 
 export async function regenerateSlide(slideContext: Slide): Promise<Slide> {
-  const prompt = regenerateSlidePrompt;
+  const prompt = regenerateSlidePrompt(slideContext);
 
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",

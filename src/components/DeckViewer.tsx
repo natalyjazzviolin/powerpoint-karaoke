@@ -43,9 +43,43 @@ export default function DeckViewer({ id }: DeckViewerProps) {
   }
 
   function nextSlide() {
-    if (deck && slideIndex < deck.slides.length - 1) {
+    if (!deck) return;
+
+    if (slideIndex < deck.slides.length - 1) {
       setSlideIndex(slideIndex + 1);
+    } else {
+      // 🎉 End of deck!
+      celebrateAndExit();
     }
+  }
+
+  function celebrateAndExit() {
+    const messages = [
+      "🤖 AI has taken over your presentation!",
+      "🛸 Robots are now running your meetings!",
+      "📈 AI salesbots are closing deals without you!",
+      "🧠 Your brain has been outsourced to a neural net!",
+      "☁️ All cloud data now belongs to AI Overlords!",
+      "🪄 Your PowerPoints are now procedurally generated forever!",
+    ];
+
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+    // Replace the deck viewer content with the message
+    const viewer = document.getElementById("deck-viewer");
+    if (viewer) {
+      viewer.innerHTML = `
+      <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
+        <h1 class="text-4xl font-bold text-purple-600 animate-pulse mb-6">${randomMessage}</h1>
+        <p class="text-lg text-gray-500">Redirecting you back to safety...</p>
+      </div>
+    `;
+    }
+
+    // After a short delay, redirect to home
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 3000); // 3 seconds
   }
 
   async function regenerateSlide() {
@@ -139,9 +173,10 @@ export default function DeckViewer({ id }: DeckViewerProps) {
         </button>
         <button
           onClick={regenerateSlide}
-          className="bg-red-500 text-white py-2 px-4 rounded"
+          className="absolute top-4 right-4 bg-white border border-gray-300 rounded-full p-2 shadow hover:rotate-90 transition"
+          title="Regenerate Slide"
         >
-          Regenerate Slide
+          🔄
         </button>
         <button
           onClick={nextSlide}
