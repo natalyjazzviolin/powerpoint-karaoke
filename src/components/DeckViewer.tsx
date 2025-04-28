@@ -90,27 +90,17 @@ export default function DeckViewer({ id }: DeckViewerProps) {
     if (slideIndex < (deck.slides?.length ?? 0) - 1) {
       setSlideIndex(slideIndex + 1);
     } else {
-      // 🎯 Finished deck
-      markDeckAsPresented();
+      // Last slide → mark deck as presented and return home
+      finishDeck();
     }
   }
 
-
-  function markDeckAsPresented() {
+  function finishDeck() {
     if (!deck) return;
 
-    const updatedDeck: Deck = {
-      ...deck,
-      status: "presented",
-    };
-
+    const updatedDeck = { ...deck, status: "presented" };
     localStorage.setItem(`pptk-${updatedDeck.id}`, JSON.stringify(updatedDeck));
-    setDeck(updatedDeck);
-
-    // 🎉 Redirect after a short pause
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 900);
+    window.location.href = "/";
   }
 
   async function regenerateSlide() {
@@ -224,30 +214,31 @@ export default function DeckViewer({ id }: DeckViewerProps) {
 
       {/* Bottom Navigation */}
       <div className="w-full flex justify-center mt-8">
-        <div className="flex justify-between items-center w-full max-w-[600px]">
+        <div className="flex justify-between items-center w-full max-w-2xl mt-8">
           <button
             onClick={prevSlide}
             disabled={slideIndex === 0}
-            className={`py-2 px-4 rounded cursor-pointer ${
-              slideIndex === 0
-                ? "bg-gray-200 text-gray-500"
-                : "bg-gray-400 text-white"
-            }`}
+            className={`py-2 px-4 rounded transition
+      ${
+        slideIndex === 0
+          ? "invisible bg-gray-200 text-gray-200 cursor-default"
+          : "bg-gray-400 hover:bg-gray-500 text-white cursor-pointer"
+      }`}
           >
             Previous
           </button>
 
-          {slideIndex === deck.slides.length - 1 ? (
+          {slideIndex === (deck.slides?.length ?? 0) - 1 ? (
             <button
-              onClick={markDeckAsPresented}
-              className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded cursor-pointer"
+              onClick={finishDeck}
+              className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded"
             >
               Finish
             </button>
           ) : (
             <button
               onClick={nextSlide}
-              className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded cursor-pointer"
+              className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded"
             >
               Next
             </button>
