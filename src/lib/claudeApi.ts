@@ -41,8 +41,9 @@ export async function generateDeck(): Promise<Deck> {
     throw new Error("Claude response missing text block.");
   }
 
-  const parsed = JSON.parse(textBlock.text) as Deck;
-  return parsed;
+  const parsed = JSON.parse(textBlock.text);
+  parsed.id = `deck-${crypto.randomUUID()}`;
+  return parsed as Deck;
 }
 
 export async function regenerateSlide(slideContext: Slide): Promise<Slide> {

@@ -157,81 +157,87 @@ export default function DeckViewer({ id }: DeckViewerProps) {
       )}
 
       {/* Main Content */}
-      <div className="min-h-[400px] flex flex-col items-center justify-center text-center p-8">
+      <div className="min-h-[400px] flex flex-col items-center justify-center text-center p-8 ">
         {slide.type === "intro" ? (
           <>
-            <h1 className="text-5xl font-extrabold mb-6 text-purple-600">
-              {slide.title}
-            </h1>
+            <div className="w-full flex justify-center">
+              <h1 className="text-4xl font-extrabold mb-6 max-w-[600px] text-center">
+                {slide.title}
+              </h1>
+            </div>
             <p className="text-xl text-gray-700 max-w-2xl">
               {slide.imagePrompt}
             </p>
           </>
         ) : (
-          <div className="flex flex-col md:flex-row justify-around items-center w-full max-w-6xl gap-8">
-            {/* LEFT: Text side */}
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="text-3xl font-bold mb-4">{slide.title}</h2>
+          <div className="w-full flex justify-center">
+            <div className="flex flex-col md:flex-row justify-around items-start w-full max-w-[800px] gap-8">
+              {/* LEFT: Text side */}
+              <div className="w-full md:w-2/3 text-center md:text-left">
+                <h2 className="text-4xl font-extrabold mb-6">{slide.title}</h2>
 
-              {slide.bullets?.length > 0 && (
-                <ul className="list-disc ml-5 space-y-2">
-                  {slide.bullets.map((bullet, idx) => (
-                    <li key={idx}>{bullet}</li>
-                  ))}
-                </ul>
-              )}
+                {slide.bullets?.length > 0 && (
+                  <ul className="list-disc ml-5 space-y-4 text-2xl">
+                    {slide.bullets.map((bullet, idx) => (
+                      <li key={idx}>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
 
-              {slide.chart && (
-                <div className="my-8">
-                  <ChartIsland slide={slide} />
+                {slide.chart && (
+                  <div className="my-8">
+                    <ChartIsland slide={slide} />
+                  </div>
+                )}
+              </div>
+
+              {/* RIGHT: Image side */}
+              {slide.imagePrompt && (
+                <div className="w-full md:w-1/3 flex justify-center">
+                  <ProgressiveImage
+                    prompt={slide.imagePrompt}
+                    prefetchedUrl={prefetchedImages[slide.id]}
+                  />
                 </div>
               )}
             </div>
-
-            {/* RIGHT: Image side */}
-            {slide.imagePrompt && (
-              <div className="flex-1 flex justify-center">
-                <ProgressiveImage
-                  prompt={slide.imagePrompt}
-                  prefetchedUrl={prefetchedImages[slide.id]}
-                />
-              </div>
-            )}
           </div>
         )}
       </div>
 
       {/* Bottom Navigation */}
-      <div className="flex justify-between items-center mt-8">
-        <button
-          onClick={prevSlide}
-          disabled={slideIndex === 0}
-          className={`py-2 px-4 rounded cursor-pointer ${
-            slideIndex === 0
-              ? "bg-gray-200 text-gray-500"
-              : "bg-gray-400 text-white"
-          }`}
-        >
-          Previous
-        </button>
+      <div className="w-full flex justify-center mt-8">
+        <div className="flex justify-between items-center w-full max-w-[600px]">
+          <button
+            onClick={prevSlide}
+            disabled={slideIndex === 0}
+            className={`py-2 px-4 rounded cursor-pointer ${
+              slideIndex === 0
+                ? "bg-gray-200 text-gray-500"
+                : "bg-gray-400 text-white"
+            }`}
+          >
+            Previous
+          </button>
 
-        {slideIndex === deck.slides.length - 1 ? (
-          <button
-            onClick={() => {
-              window.location.href = "/";
-            }}
-            className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded cursor-pointer"
-          >
-            Finish
-          </button>
-        ) : (
-          <button
-            onClick={nextSlide}
-            className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded cursor-pointer"
-          >
-            Next
-          </button>
-        )}
+          {slideIndex === deck.slides.length - 1 ? (
+            <button
+              onClick={() => {
+                window.location.href = "/";
+              }}
+              className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded cursor-pointer"
+            >
+              Finish
+            </button>
+          ) : (
+            <button
+              onClick={nextSlide}
+              className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded cursor-pointer"
+            >
+              Next
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
