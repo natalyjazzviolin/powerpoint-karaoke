@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
   <main
     class="flex flex-col items-center justify-center min-h-screen p-8 text-center"
   >
-    <h1 class="text-4xl font-bold mb-8">🎤 PowerPoint Karaoke Generator</h1>
+    <h1 class="text-4xl font-bold mb-8">🤖 PowerPoint Karaoke Machine</h1>
 
     <div class="flex flex-col space-y-4 w-full max-w-sm">
       <button
@@ -16,47 +16,101 @@ import Layout from "../layouts/Layout.astro";
         Generate New Deck
       </button>
 
-      <a
-        href="/history"
+      <!-- <a
+        href="/decks"
         class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg text-center"
       >
-        View Deck History
-      </a>
+        View Presented Decks
+      </a> -->
+
+      <!-- Hidden Admin Button -->
+      <button
+        id="admin-btn"
+        class="opacity-0 hover:opacity-100 text-xs text-gray-400 hover:text-gray-600 transition"
+      >
+        Admin Panel
+      </button>
     </div>
   </main>
 </Layout>
 
-<script is:inline>
+<script is:inline type="module">
   window.addEventListener("DOMContentLoaded", () => {
-    const btn = document.querySelector("#generate-btn");
+    const generateBtn = document.querySelector("#generate-btn");
+    const adminBtn = document.querySelector("#admin-btn");
 
-    if (!btn) {
-      console.error("Generate button not found!");
-      return;
+    async function loadAvailableDeck() {
+      const decks = [];
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+
+        // Only load decks
+        if (key && key.startsWith("pptk-deck-")) {
+          const item = localStorage.getItem(key);
+          if (item) {
+            try {
+              const deck = JSON.parse(item);
+              if (deck.status === "available") {
+                decks.push(deck);
+              }
+            } catch (error) {
+              console.error("Error parsing deck:", error, key);
+            }
+          }
+        }
+      }
+
+      return decks;
     }
 
-    btn.addEventListener("click", async () => {
-      btn.disabled = true;
-      btn.textContent = "Generating...";
+    if (generateBtn) {
+      generateBtn.addEventListener("click", async () => {
+        generateBtn.disabled = true;
+        generateBtn.textContent = "Loading...";
 
-      try {
-        const res = await fetch("/api/generate-deck", { method: "POST" });
-        const deck = await res.json();
+        try {
+          const availableDecks = await loadAvailableDeck();
 
-        // Force a fresh clean ID after generation
-        deck.id = `deck-${crypto.randomUUID()}`;
+          if (availableDecks.length > 0) {
+            const randomDeck =
+              availableDecks[Math.floor(Math.random() * availableDecks.length)];
+            window.location.href = `/deck/${randomDeck.id}`;
+          } else {
+            // No available decks - generate a fresh one
+            const res = await fetch("/api/generate-deck", { method: "POST" });
 
-        // Save directly to localStorage (no import)
-        localStorage.setItem(`pptk-${deck.id}`, JSON.stringify(deck));
+            if (!res.ok) {
+              throw new Error("Failed to generate new deck");
+            }
 
-        // Redirect to view the deck
-        window.location.href = `/deck/${deck.id}`;
-      } catch (error) {
-        console.error("Failed to generate deck:", error);
-        btn.disabled = false;
-        btn.textContent = "Generate New Deck";
-        alert("Failed to generate deck. Please try again.");
-      }
-    });
+            const newDeckData = await res.json();
+
+            // Fully reassign critical fields:
+            const newDeck = {
+              ...newDeckData,
+              id: `deck-${crypto.randomUUID()}`,
+              status: "available",
+              createdAt: new Date().toISOString(),
+            };
+
+            localStorage.setItem(`pptk-${newDeck.id}`, JSON.stringify(newDeck));
+
+            window.location.href = `/deck/${newDeck.id}`;
+          }
+        } catch (error) {
+          console.error("Deck generation failed:", error);
+          alert("Failed to generate deck. Please try again.");
+          generateBtn.disabled = false;
+          generateBtn.textContent = "Generate New Deck";
+        }
+      });
+    }
+
+    if (adminBtn) {
+      adminBtn.addEventListener("click", () => {
+        window.location.href = "/admin";
+      });
+    }
   });
 </script>

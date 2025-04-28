@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { get, set } from "idb-keyval";
 
 interface ProgressiveImageProps {
   prompt: string;
@@ -21,18 +22,15 @@ export default function ProgressiveImage({
       return; // Skip generating again
     }
 
-    async function fetchAiImage() {
+    async function fetchAiImage(prompt: string): Promise<string> {
+      const key = `pptk-img-${prompt}`;
+
       try {
-        // Check cache
-        const cacheKey = `pptk-img-${prompt}`; // You might want a better unique ID
-        const cached = localStorage.getItem(cacheKey);
-        if (cached) {
-          setAiImageUrl(cached);
-          setLoading(false);
-          return;
+        const cachedUrl = await get(key);
+        if (cachedUrl) {
+          return cachedUrl;
         }
 
-        // Otherwise generate
         const res = await fetch("/api/generate-image", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -40,14 +38,17 @@ export default function ProgressiveImage({
         });
 
         const { url } = await res.json();
-        localStorage.setItem(cacheKey, url);
-        setAiImageUrl(url);
+
+        await set(key, url); // Save in IndexedDB (NOT localStorage)
+
+        return url;
       } catch (error) {
         console.error("Failed to fetch AI image:", error);
+        return "";
       }
     }
 
-    fetchAiImage();
+    fetchAiImage(prompt);
   }, [prompt, prefetchedUrl]);
 
   return (

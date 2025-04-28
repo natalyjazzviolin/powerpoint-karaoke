@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main
+    class="flex flex-col items-center justify-center min-h-screen p-8 text-center"
+  >
+    <h1 class="text-4xl font-bold mb-8">🎤 PowerPoint Karaoke Generator</h1>
+
+    <div class="flex flex-col space-y-4 w-full max-w-sm">
+      <button
+        id="generate-btn"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg cursor-pointer"
+      >
+        Generate New Deck
+      </button>
+
+      <a
+        href="/history"
+        class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg text-center"
+      >
+        View Deck History
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    const btn = document.querySelector("#generate-btn");
+
+    if (!btn) {
+      console.error("Generate button not found!");
+      return;
+    }
+
+    btn.addEventListener("click", async () => {
+      btn.disabled = true;
+      btn.textContent = "Generating...";
+
+      try {
+        const res = await fetch("/api/generate-deck", { method: "POST" });
+        const deck = await res.json();
+
+        // Force a fresh clean ID after generation
+        deck.id = `deck-${crypto.randomUUID()}`;
+
+        // Save directly to localStorage (no import)
+        localStorage.setItem(`pptk-${deck.id}`, JSON.stringify(deck));
+
+        // Redirect to view the deck
+        window.location.href = `/deck/${deck.id}`;
+      } catch (error) {
+        console.error("Failed to generate deck:", error);
+        btn.disabled = false;
+        btn.textContent = "Generate New Deck";
+        alert("Failed to generate deck. Please try again.");
+      }
+    });
+  });
+</script>

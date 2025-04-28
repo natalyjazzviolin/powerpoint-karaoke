@@ -1,0 +1,172 @@
+---
+// src/pages/admin.astro
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Admin Panel">
+  <main class="p-8">
+    <h1 class="text-3xl font-bold mb-8">⚙️ Admin Panel</h1>
+
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-semibold">Deck Management</h2>
+
+      <button
+        id="batch-generate-btn"
+        class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded"
+      >
+        + Batch Generate Decks
+      </button>
+    </div>
+
+    <div id="deck-list" class="flex flex-col space-y-4"></div>
+
+    <div class="mt-8">
+      <a
+        href="/"
+        class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded inline-block"
+      >
+        🔙 Back to Home
+      </a>
+    </div>
+  </main>
+
+  <script is:inline>
+    async function refreshDeckList() {
+      const container = document.getElementById("deck-list");
+      container.innerHTML = "";
+
+      const decks = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith("pptk-")) {
+          const item = localStorage.getItem(key);
+          if (item) {
+            try {
+              const deck = JSON.parse(item);
+              decks.push(deck);
+            } catch (error) {
+              console.error("Failed to parse deck:", error);
+            }
+          }
+        }
+      }
+
+      decks.sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+      if (decks.length === 0) {
+        container.innerHTML =
+          '<p class="text-gray-500 text-lg text-center">No decks found.</p>';
+        return;
+      }
+
+      container.innerHTML = decks
+        .map(
+          (deck) => `
+          <div class="p-4 bg-white rounded shadow flex justify-between items-center">
+            <div>
+              <h3 class="font-bold text-xl mb-1">${deck.title}</h3>
+              <p class="text-sm ${deck.status === "presented" ? "text-red-600" : "text-green-600"} font-semibold">
+                ${deck.status === "presented" ? "Presented" : "Available"} • ${new Date(deck.createdAt).toLocaleString()}
+              </p>
+            </div>
+
+            <div class="flex gap-2">
+              <a 
+                href="/deck/${deck.id}" 
+                target="_blank" 
+                class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded text-sm"
+              >
+                View
+              </a>
+
+              ${
+                deck.status === "presented"
+                  ? `<button onclick="markAvailable('${deck.id}')" class="bg-yellow-400 hover:bg-yellow-500 text-white py-1 px-3 rounded text-sm">Mark Available</button>`
+                  : `<button onclick="markPresented('${deck.id}')" class="bg-purple-500 hover:bg-purple-600 text-white py-1 px-3 rounded text-sm">Mark Presented</button>`
+              }
+
+              <button onclick="deleteDeck('${deck.id}')" class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded text-sm">
+                Delete
+              </button>
+            </div>
+          </div>
+        `
+        )
+        .join("");
+    }
+
+    async function markAvailable(id) {
+      const key = `pptk-${id}`;
+      const item = localStorage.getItem(key);
+      if (!item) return;
+
+      const deck = JSON.parse(item);
+      deck.status = "available";
+      localStorage.setItem(key, JSON.stringify(deck));
+      await refreshDeckList();
+    }
+
+    async function markPresented(id) {
+      const key = `pptk-${id}`;
+      const item = localStorage.getItem(key);
+      if (!item) return;
+
+      const deck = JSON.parse(item);
+      deck.status = "presented";
+      localStorage.setItem(key, JSON.stringify(deck));
+      await refreshDeckList();
+    }
+
+    async function deleteDeck(id) {
+      if (
+        !confirm(
+          "Are you sure you want to delete this deck? This cannot be undone."
+        )
+      )
+        return;
+      const key = `pptk-${id}`;
+      localStorage.removeItem(key);
+      await refreshDeckList();
+    }
+
+    async function batchGenerate() {
+      const btn = document.getElementById("batch-generate-btn");
+      btn.disabled = true;
+      btn.textContent = "Generating...";
+
+      try {
+        const promises = [];
+        for (let i = 0; i < 5; i++) {
+          promises.push(fetch("/api/generate-deck", { method: "POST" }));
+        }
+
+        const results = await Promise.all(promises);
+
+        for (const res of results) {
+          const deck = await res.json();
+          deck.id = `deck-${crypto.randomUUID()}`;
+          deck.status = "available";
+          localStorage.setItem(`pptk-${deck.id}`, JSON.stringify(deck));
+        }
+
+        await refreshDeckList();
+      } catch (error) {
+        console.error("Batch generate error:", error);
+        alert("Failed to batch generate decks.");
+      }
+
+      btn.disabled = false;
+      btn.textContent = "+ Batch Generate Decks";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document
+        .getElementById("batch-generate-btn")
+        .addEventListener("click", batchGenerate);
+      refreshDeckList();
+    });
+  </script>
+</Layout>

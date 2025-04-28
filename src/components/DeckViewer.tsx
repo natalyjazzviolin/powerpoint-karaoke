@@ -87,8 +87,40 @@ export default function DeckViewer({ id }: DeckViewerProps) {
     if (slideIndex < deck.slides.length - 1) {
       setSlideIndex(slideIndex + 1);
     } else {
-      //   celebrateAndExit();
+        celebrateAndExit();
     }
+  }
+
+  function celebrateAndExit() {
+    const messages = [
+      "🤖 AI has claimed this deck!",
+      "📈 The robots have judged your pitch!",
+      "🚀 Your sales career has been absorbed by the singularity!",
+      "🎭 The future of business is... weird.",
+    ];
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+    const viewer = document.getElementById("deck-viewer");
+    if (viewer) {
+      viewer.innerHTML = `
+      <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
+        <h1 class="text-4xl font-bold text-purple-600 animate-pulse mb-6">${randomMessage}</h1>
+        <p class="text-lg text-gray-500">Returning to safety...</p>
+      </div>
+    `;
+    }
+
+    // ✅ Mark deck as presented
+    const deckJson = localStorage.getItem(`pptk-${id}`);
+    if (deckJson) {
+      const deck = JSON.parse(deckJson);
+      deck.status = "presented";
+      localStorage.setItem(`pptk-${id}`, JSON.stringify(deck));
+    }
+
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1000);
   }
 
   async function regenerateSlide() {

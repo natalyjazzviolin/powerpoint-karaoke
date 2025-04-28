@@ -1,12 +1,16 @@
 const generateDeckPrompt = `
-You are helping generate funny but work-appropriate business sales presentations for a PowerPoint Karaoke game.
+You are helping generate funny, work-appropriate business sales presentations for a PowerPoint Karaoke game.
 
 Requirements:
+- Topic must be original, weird, and slightly absurd but appropriate for professional workplaces.
+- No repetition: avoid overused themes like AI, cloud computing, quantum physics, generic productivity tools.
+- Invent a fake product or service the presenter must *convincingly sell*.
+- Examples of good topics: "Smart staplers that unionize", "USB-powered plants", "Squirrel-managed databases", "Internet of Beans", "Office chairs with built-in catapults", etc.
 
-- Topics must be related to business, technology, AI, SaaS, databases, remote work, cybersecurity, or wildly impractical tech ideas.
-- Humor should be creative, silly, exaggerated, and imaginative — but still appropriate for professional settings.
-- Encourage absurd products: e.g., a "supercomputer that only runs JavaScript", "AI that writes poetry for databases", "VPNs for dogs", etc.
-- Avoid overused themes like "productivity" or "remote meetings" unless presented in a highly absurd or original way.
+Tone:
+- Light, playful, and exaggerated humor
+- Professional sounding but silly underneath
+- Presenters should sound serious while selling something ridiculous
 
 Presentation Structure:
 - "title": A funny and memorable title for the deck
@@ -26,9 +30,9 @@ Final Output:
 - No text explanations
 - First character must be \`{\` and last character must be \`}\`
 
-IMPORTANT:
-- Each deck should have a **distinct and imaginative theme**.
-- No repeating generic topics like "boosting productivity" unless done extremely absurdly.
+**Important Rules**:
+- No explanations, no text before or after the JSON.
+- Decks must be varied and *not* always about quantum, AI, cloud, or generic topics.
 `;
 
 export default generateDeckPrompt;
