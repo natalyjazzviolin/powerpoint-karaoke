@@ -31,6 +31,15 @@ export default function DeckViewer({ id }: DeckViewerProps) {
       imagePrompt: parsedDeck.description,
     });
 
+    parsedDeck.slides.push({
+      id: "qa-slide",
+      type: "qa",
+      title: "Q&A Time!",
+      bullets: [],
+      chart: null,
+      imagePrompt: null, // Will fill manually below
+    });
+
     setDeck(parsedDeck);
   }, [id]);
 
@@ -168,8 +177,9 @@ export default function DeckViewer({ id }: DeckViewerProps) {
       )}
 
       {/* Main Content */}
-      <div className="min-h-[400px] flex flex-col items-center justify-center text-center p-8 ">
+      <div className="min-h-[400px] flex flex-col items-center justify-center text-center p-8">
         {slide.type === "intro" ? (
+          // 🚀 INTRO SLIDE
           <>
             <div className="w-full flex justify-center">
               <h1 className="text-4xl font-extrabold mb-6 max-w-[600px] text-center">
@@ -180,7 +190,29 @@ export default function DeckViewer({ id }: DeckViewerProps) {
               {slide.imagePrompt}
             </p>
           </>
+        ) : slide.type === "qa" ? (
+          // 🚀 Q&A SLIDE
+          <>
+            <h1 className="text-4xl font-extrabold text-purple-600 mb-8">
+              Q&A
+            </h1>
+            <div className="flex flex-wrap justify-center gap-6">
+              {deck.slides
+                .filter(
+                  (s) => s.imagePrompt && s.type !== "intro" && s.type !== "qa"
+                )
+                .map((imgSlide) => (
+                  <div key={imgSlide.id} className="w-40 h-40">
+                    <ProgressiveImage
+                      prompt={imgSlide.imagePrompt!}
+                      prefetchedUrl={prefetchedImages[imgSlide.id]}
+                    />
+                  </div>
+                ))}
+            </div>
+          </>
         ) : (
+          // 🚀 NORMAL SLIDE
           <div className="w-full flex justify-center">
             <div className="flex flex-col md:flex-row justify-around items-start w-full max-w-[800px] gap-8">
               {/* LEFT: Text side */}

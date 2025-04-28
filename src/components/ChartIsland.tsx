@@ -11,6 +11,7 @@ import {
   Line,
   CartesianGrid,
   Legend,
+  LabelList,
 } from "recharts";
 import type { Slide } from "../types/deck";
 
@@ -34,7 +35,8 @@ export default function ChartIsland({ slide }: ChartIslandProps) {
     <div className="w-full h-64">
       <ResponsiveContainer width="100%" height="100%">
         {type === "bar" ? (
-          <BarChart data={chartData}>
+          <BarChart data={chartData} layout="horizontal">
+            <LabelList dataKey="label" position="top" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
@@ -43,7 +45,8 @@ export default function ChartIsland({ slide }: ChartIslandProps) {
             <Bar dataKey="value" />
           </BarChart>
         ) : type === "pie" ? (
-          <PieChart>
+          <PieChart layout="horizontal">
+            <LabelList dataKey="label" position="outside" />
             <Pie
               data={chartData}
               dataKey="value"
@@ -57,7 +60,7 @@ export default function ChartIsland({ slide }: ChartIslandProps) {
             <Tooltip />
           </PieChart>
         ) : type === "line" ? (
-          <LineChart data={chartData}>
+          <LineChart data={chartData} layout="horizontal">
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />

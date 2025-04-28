@@ -10,7 +10,7 @@ export interface ChartInfo {
 
 export interface Slide {
   id: string;
-  type: "standard" | "chart" | "intro";
+  type: "standard" | "chart" | "intro" | "qa";
   title: string;
   bullets: string[];
   chart: ChartInfo | null;
