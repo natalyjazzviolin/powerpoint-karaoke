@@ -1,19 +1,20 @@
 export type SlideType = "standard" | "chart" | "image";
 
-export interface ChartData {
+export interface ChartInfo {
   type: "bar" | "pie" | "line";
-  labels: string[];
-  data: number[];
+  data: {
+    labels: string[];
+    values: number[];
+  };
 }
 
 export interface Slide {
   id: string;
-  type: SlideType;
+  type: "standard" | "chart" | "intro";
   title: string;
-  bullets?: string[];
-  chart?: ChartData | null;
-  imagePrompt?: string | null;
-  regeneratedVersions: Slide[];
+  bullets: string[];
+  chart: ChartInfo | null;
+  imagePrompt: string | null;
 }
 
 export interface Deck {

@@ -1,38 +1,9 @@
 import type { Deck, Slide } from "../types/deck";
+import generateDeckPrompt from "./prompts/generateDeckPrompt";
+import regenerateSlidePrompt from "./prompts/regenerateSlidePrompt";
 
 export async function generateDeck(): Promise<Deck> {
-  const prompt = `
-You are helping generate fun but work-appropriate business sales presentations.
-Requirements:
-
-- Topic must be business-related (technology, SaaS, data, remote work, productivity tools).
-- Humor must be light, safe, and appropriate for a professional work environment.
-- Create a fake product or service to sell.
-- Presentation structure:
-  - Title
-  - Funny Description
-  - 5-7 slides
-    - Each slide has title, bullets, optionally a chart, optionally an image description
-- Return ONLY valid JSON matching this structure:
-
-{
-  "id": "deck-1234",
-  "title": "Why Your Database Needs Therapy",
-  "description": "Exploring stress management strategies for overworked databases.",
-  "slides": [
-    {
-      "id": "slide-1",
-      "type": "standard",
-      "title": "Symptoms of Burnout",
-      "bullets": ["Slow queries", "Frequent timeouts", "Schema changes causing anxiety"],
-      "chart": null,
-      "imagePrompt": "A cartoon database meditating at a spa retreat"
-    }
-  ],
-  "createdAt": "ISO timestamp like 2024-04-27T12:00:00Z"
-}
-Respond ONLY with JSON — no extra text.
-`;
+  const prompt = generateDeckPrompt;
 
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -75,7 +46,7 @@ Respond ONLY with JSON — no extra text.
 }
 
 export async function regenerateSlide(slideContext: Slide): Promise<Slide> {
-  const prompt = `Rewrite this slide: ${JSON.stringify(slideContext)} ...`;
+  const prompt = regenerateSlidePrompt;
 
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -85,9 +56,9 @@ export async function regenerateSlide(slideContext: Slide): Promise<Slide> {
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: "claude-3-opus-20240229",
+      model: "claude-3-sonnet-20240229",
+      max_tokens: 1500,
       temperature: 0.7,
-      max_tokens: 500,
       messages: [{ role: "user", content: prompt }],
     }),
   });
@@ -99,11 +70,27 @@ export async function regenerateSlide(slideContext: Slide): Promise<Slide> {
   }
 
   const data = await response.json();
-  console.log("Claude Raw Response:", data);
 
-  if (!data.content) {
-    throw new Error("Claude response missing content field.");
+  const textBlock = data.content.find((block: any) => block.type === "text");
+
+  if (!textBlock || typeof textBlock.text !== "string") {
+    throw new Error("Claude response missing text block.");
   }
 
-  return JSON.parse(data.content) as Slide;
+  const rawText = textBlock.text.trim();
+
+  // ✨ Try to extract JSON if there's any leading text
+  const firstBrace = rawText.indexOf("{");
+  const lastBrace = rawText.lastIndexOf("}");
+
+  if (firstBrace === -1 || lastBrace === -1) {
+    console.error("Claude returned no JSON block:", rawText);
+    throw new Error("No JSON object found in Claude output.");
+  }
+
+  const jsonText = rawText.slice(firstBrace, lastBrace + 1);
+
+  const newSlide = JSON.parse(jsonText) as Slide;
+  return newSlide;
+
 }

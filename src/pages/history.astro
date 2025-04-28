@@ -1,33 +1,63 @@
 ---
-import { listDecks } from "../lib/storage";
-import type { Deck } from "../types/deck";
-
-// Fetch all saved decks
-const decks = listDecks();
+import Layout from "../layouts/Layout.astro";
 ---
 
-<main class="p-8">
-  <h1 class="text-3xl font-bold mb-8">Deck History</h1>
+<Layout title="Deck History">
+  <main class="p-8">
+    <h1 class="text-3xl font-bold mb-6">📚 Deck History</h1>
 
-  {
-    decks.length === 0 ? (
-      <p>No decks found. Go generate one!</p>
-    ) : (
-      <ul class="space-y-4">
-        {decks.map((deck: Deck) => (
-          <li class="border p-4 rounded-lg shadow">
-            <a
-              href={`/deck/${deck.id}`}
-              class="text-blue-600 underline text-lg"
-            >
-              {deck.title}
-            </a>
-            <p class="text-gray-500 text-sm">
-              Created: {new Date(deck.createdAt).toLocaleString()}
-            </p>
-          </li>
-        ))}
-      </ul>
-    )
-  }
-</main>
+    <div id="deck-list" class="flex flex-col space-y-4"></div>
+
+    <div class="mt-8">
+      <a
+        href="/"
+        class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
+        >🔙 Back to Home</a
+      >
+    </div>
+  </main>
+
+  <script is:inline>
+    window.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("deck-list");
+
+      const decks = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith("pptk-")) {
+          const item = localStorage.getItem(key);
+          if (item) {
+            try {
+              const deck = JSON.parse(item);
+              decks.push(deck);
+            } catch (error) {
+              console.error("Failed to parse deck:", error);
+            }
+          }
+        }
+      }
+
+      decks.sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+      if (decks.length === 0) {
+        container.innerHTML =
+          '<p class="text-gray-500 text-lg text-center">No decks found yet. Generate one!</p>';
+        return;
+      }
+
+      container.innerHTML = decks
+        .map(
+          (deck) => `
+        <a href="/deck/${deck.id}" class="block p-4 bg-white rounded shadow hover:bg-gray-100">
+          <h2 class="text-xl font-bold">${deck.title}</h2>
+          <p class="text-gray-600 text-sm">${new Date(deck.createdAt).toLocaleString()}</p>
+        </a>
+      `
+        )
+        .join("");
+    });
+  </script>
+</Layout>

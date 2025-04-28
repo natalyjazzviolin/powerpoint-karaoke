@@ -1,71 +1,74 @@
 import {
   BarChart,
   Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
   PieChart,
   Pie,
   LineChart,
   Line,
-  XAxis,
-  YAxis,
-  Tooltip,
   CartesianGrid,
   Legend,
-  ResponsiveContainer,
 } from "recharts";
-import type { ChartData } from "../types/deck";
+import type { Slide } from "../types/deck";
 
 interface ChartIslandProps {
-  chart: ChartData;
+  slide: Slide;
 }
 
-export default function ChartIsland({ chart }: ChartIslandProps) {
-  const data = chart.labels.map((label, idx) => ({
+export default function ChartIsland({ slide }: ChartIslandProps) {
+  if (!slide.chart || !slide.chart.data) {
+    return null;
+  }
+
+  const { type, data } = slide.chart;
+  // ✅ TS now knows data has labels and values
+  const chartData = data.labels.map((label, idx) => ({
     name: label,
-    value: chart.data[idx],
+    value: data.values[idx],
   }));
 
   return (
-    <div className="w-full h-[300px]">
-      {chart.type === "bar" && (
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
+    <div className="w-full h-64">
+      <ResponsiveContainer width="100%" height="100%">
+        {type === "bar" ? (
+          <BarChart data={chartData}>
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="value" fill="#8884d8" />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Bar dataKey="value" />
           </BarChart>
-        </ResponsiveContainer>
-      )}
-      {chart.type === "pie" && (
-        <ResponsiveContainer width="100%" height="100%">
+        ) : type === "pie" ? (
           <PieChart>
             <Pie
+              data={chartData}
               dataKey="value"
-              data={data}
+              nameKey="name"
               cx="50%"
               cy="50%"
               outerRadius={80}
-              fill="#82ca9d"
+              fill="#8884d8"
               label
             />
             <Tooltip />
           </PieChart>
-        </ResponsiveContainer>
-      )}
-      {chart.type === "line" && (
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
+        ) : type === "line" ? (
+          <LineChart data={chartData}>
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="value" stroke="#82ca9d" />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Line type="monotone" dataKey="value" stroke="#8884d8" />
           </LineChart>
-        </ResponsiveContainer>
-      )}
+        ) : (
+          <div className="text-red-500">Unsupported chart type</div>
+        )}
+      </ResponsiveContainer>
     </div>
   );
 }

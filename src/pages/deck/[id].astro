@@ -1,102 +1,14 @@
 ---
 export const prerender = false;
 
-import { getDeck } from "../../lib/storage";
-import type { Deck } from "../../types/deck";
+import Layout from "../../layouts/Layout.astro";
+import DeckViewer from "../../components/DeckViewer"; // ✅ Import it cleanly
 
 const { id } = Astro.params;
 ---
 
-<main class="p-8">
-  <div id="deck-viewer" data-id={id} class="mb-8">
-    <!-- JS will inject current slide here -->
-  </div>
-
-  <div class="flex justify-between">
-    <button id="prev-slide" class="bg-gray-400 text-white py-2 px-4 rounded"
-      >Previous</button
-    >
-    <button
-      id="regenerate-slide"
-      class="bg-red-500 text-white py-2 px-4 rounded">Regenerate Slide</button
-    >
-    <button id="next-slide" class="bg-green-600 text-white py-2 px-4 rounded"
-      >Next</button
-    >
-  </div>
-</main>
-
-<script is:inline>
-  window.addEventListener("DOMContentLoaded", () => {
-    const viewer = document.getElementById("deck-viewer");
-    const id = viewer?.dataset.id;
-
-    if (!id) {
-      console.error("Deck ID missing!");
-      return;
-    }
-
-    const deckJson = localStorage.getItem(`pptk-${id}`);
-    const deck = deckJson ? JSON.parse(deckJson) : null;
-
-    if (!deck) {
-      viewer.innerHTML =
-        '<p class="text-center text-xl text-red-500">Deck not found!</p>';
-      return;
-    }
-
-    let slideIndex = 0;
-
-    function renderSlide() {
-      const slide = deck.slides[slideIndex];
-
-      if (!slide) {
-        viewer.innerHTML = "<p>No slide found.</p>";
-        return;
-      }
-
-      viewer.innerHTML = `
-        <h2 class="text-3xl font-bold mb-4">${slide.title}</h2>
-        ${
-          slide.bullets?.length
-            ? `<ul class="list-disc ml-5 space-y-2">
-                ${slide.bullets.map((b) => `<li>${b}</li>`).join("")}
-              </ul>`
-            : ""
-        }
-        ${
-          slide.chart
-            ? `<div class="my-6"><p>[Chart Placeholder]</p></div>`
-            : ""
-        }
-        ${
-          slide.imagePrompt
-            ? `<div class="italic text-gray-500 mt-6">Imagine: ${slide.imagePrompt}</div>`
-            : ""
-        }
-      `;
-    }
-
-    renderSlide();
-
-    document.getElementById("prev-slide")?.addEventListener("click", () => {
-      if (slideIndex > 0) {
-        slideIndex--;
-        renderSlide();
-      }
-    });
-
-    document.getElementById("next-slide")?.addEventListener("click", () => {
-      if (slideIndex < deck.slides.length - 1) {
-        slideIndex++;
-        renderSlide();
-      }
-    });
-
-    document
-      .getElementById("regenerate-slide")
-      ?.addEventListener("click", () => {
-        alert("Regenerate not wired yet.");
-      });
-  });
-</script>
+<Layout>
+  <main class="p-8">
+    <DeckViewer id={id!} client:only="react" />
+  </main>
+</Layout>
