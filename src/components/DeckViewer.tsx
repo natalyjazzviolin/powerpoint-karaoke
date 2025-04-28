@@ -36,19 +36,23 @@ export default function DeckViewer({ id }: DeckViewerProps) {
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-        if (!deck || !deck.slides) { return }
       if (e.key === "ArrowRight") {
-        setSlideIndex((prev) =>
-          Math.min(prev + 1, deck?.slides.length - 1 || 0)
-        );
+        if (slideIndex < (deck?.slides?.length ?? 0) - 1) {
+          nextSlide();
+        } else {
+          finishDeck();
+        }
       } else if (e.key === "ArrowLeft") {
-        setSlideIndex((prev) => Math.max(prev - 1, 0));
+        if (slideIndex > 0) {
+          prevSlide();
+        }
       }
     }
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [deck]);
+  }, [slideIndex, deck]);
+
 
   useEffect(() => {
     if (!deck) return;
