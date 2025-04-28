@@ -57,28 +57,23 @@ export default function DeckViewer({ id }: DeckViewerProps) {
   }, [slideIndex, deck]);
 
   async function prefetchImage(slideId: string, prompt: string) {
-    try {
-      const cached = await get(`pptk-img-${slideId}`);
-      if (cached) {
-        setPrefetchedImages((prev) => ({ ...prev, [slideId]: cached }));
-        return;
-      }
+    if (!deck) return; // <- make sure deck is available
 
+    const enhancedPrompt = `${prompt} - deck ${deck.id}`;
+
+    try {
       const res = await fetch("/api/generate-image", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ prompt: enhancedPrompt }),
       });
       const { url } = await res.json();
-
-      await set(`pptk-img-${slideId}`, url);
 
       setPrefetchedImages((prev) => ({ ...prev, [slideId]: url }));
     } catch (error) {
       console.error("Prefetching image failed:", error);
     }
   }
-
 
   function prevSlide() {
     if (slideIndex > 0) {

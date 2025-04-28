@@ -1,42 +1,34 @@
 const generateDeckPrompt = `
-You are helping generate silly but work-appropriate business sales presentations for a PowerPoint Karaoke game.
+You are helping generate funny but work-appropriate business sales presentations for a PowerPoint Karaoke game.
 
 Requirements:
 
-- The topic must be business-related (technology, SaaS, databases, remote work, AI, productivity tools, cybersecurity, etc.).
-- The tone must be playful, light, exaggerated, and humorous — appropriate for professional environments.
-- Invent a fake product or service to sell.
-- Presentation Structure:
-  - "title" — Funny but plausible business title
-  - "description" — Lightly humorous overview of the presentation
-  - "slides" — 5–7 slides
-    - Each slide must have:
-      - "id" — unique slide ID
-      - "type" — either "standard" or "chart"
-      - "title" — short, funny title
-      - "bullets" — 2–4 humorous bullet points (if applicable)
-      - "chart" (optional):
-        - If included, must be an object, not a string
-        - Chart object structure:
-          {
-            "type": "bar" | "pie" | "line",
-            "data": {
-              "labels": [Array of 3–6 short funny labels],
-              "values": [Array of 3–6 numbers between 0 and 100]
-            }
-          }
-      - "imagePrompt" (optional) — short funny image idea related to the slide
-- Final Object Fields:
-  - "id": unique deck ID like "deck-1234"
-  - "title": deck title
-  - "description": deck description
-  - "slides": array of slides
-  - "createdAt": ISO 8601 timestamp (e.g., "2024-04-27T12:00:00Z")
+- Topics must be related to business, technology, AI, SaaS, databases, remote work, cybersecurity, or wildly impractical tech ideas.
+- Humor should be creative, silly, exaggerated, and imaginative — but still appropriate for professional settings.
+- Encourage absurd products: e.g., a "supercomputer that only runs JavaScript", "AI that writes poetry for databases", "VPNs for dogs", etc.
+- Avoid overused themes like "productivity" or "remote meetings" unless presented in a highly absurd or original way.
 
-STRICT RULES:
-- Return ONLY valid JSON matching this structure.
-- No extra explanations, no notes, no "Here is the JSON:" preambles.
-- Start output with { and end with }.
+Presentation Structure:
+- "title": A funny and memorable title for the deck
+- "description": A short humorous overview of the presentation
+- 5–7 slides
+  - Each slide must include:
+    - "id": Unique slide ID
+    - "type": "standard" or "chart"
+    - "title": Short, funny title
+    - "bullets": 2–4 humorous bullet points
+    - Optional "chart" field:
+      - { "type": "bar" | "pie" | "line", "data": { "labels": [...], "values": [...] } }
+    - Optional "imagePrompt" field: a short, highly specific and silly idea for an illustration
+
+Final Output:
+- Only return valid JSON
+- No text explanations
+- First character must be \`{\` and last character must be \`}\`
+
+IMPORTANT:
+- Each deck should have a **distinct and imaginative theme**.
+- No repeating generic topics like "boosting productivity" unless done extremely absurdly.
 `;
 
 export default generateDeckPrompt;
